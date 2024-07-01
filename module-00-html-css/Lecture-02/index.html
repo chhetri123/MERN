@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lecture 02</title>
+  </head>
+  <body>
+    <h1>Lecture 02: Introduction to HTML</h1>
+
+    <p>
+      HTML (Hypertext Markup Language) is a standard markup language for
+      creating web pages. It defines the structure of a document, including its
+      title, headings, paragraphs, images, links, and more.
+    </p>
+
+    <p>
+      HTML is used to create both static and dynamic web pages. Static web pages
+      are created by writing HTML code directly into a text file, while dynamic
+      web pages use server-side programming languages (such as PHP, Python, or
+      Node.js) to generate content based on user input or data from databases.
+    </p>
+
+    <style>
+      #intro {
+        font-size: 20px;
+        color: blue;
+      }
+      .highlight {
+        background-color: yellow;
+        font-weight: bold;
+      }
+    </style>
+    <!-- Id and class demo -->
+    <!-- The id attribute is used to uniquely identify an element on a page. It should be unique within the entire HTML document. -->
+    <div id="intro">
+      <h1>Welcome to My Website</h1>
+      <p>This is the introduction section.</p>
+    </div>
+
+    <!-- class -->
+    <!-- The class attribute is used to apply styles or behaviors to multiple elements. Multiple elements can share the same class. -->
+    <p>This is a <span class="highlight">highlighted</span> text.</p>
+    <p>
+      Another paragraph with <span class="highlight">highlighted</span> text.
+    </p>
+    <!-- Images -->
+
+    <img
+      src="https://www.example.com/image.jpg"
+      alt="Example Image"
+      width="500"
+      height="600"
+    />
+
+    <!-- Videos -->
+
+    <video width="320" height="240" controls>
+      <source src="movie.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+
+    <!-- Audio -->
+    <audio controls>
+      <source src="audio.mp3" type="audio/mp3" />
+      Your browser does not support the audio element.
+    </audio>
+
+    <!-- Forms -->
+
+    <form>
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" /><br /><br />
+      <input type="submit" value="Submit" />
+    </form>
+
+    <!-- Textarea -->
+    <form>
+      <label for="message">Message:</label><br />
+      <textarea id="message" name="message" rows="4" cols="50"></textarea
+      ><br /><br />
+      <input type="submit" value="Submit" />
+    </form>
+    <!-- CheckBox -->
+
+    <form>
+      <h2>Checkbox</h2>
+      <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
+      <label for="vehicle1"> I have a bike</label><br />
+      <input type="checkbox" id="vehicle2" name="vehicle2" value="Car" />
+      <label for="vehicle2"> I have a car</label><br /><br />
+
+      <!-- Radio Buttons -->
+      <h2>Radio Buttons</h2>
+      <input type="radio" id="male" name="gender" value="male" />
+      <label for="male">Male</label><br />
+      <input type="radio" id="female" name="gender" value="female" />
+      <label for="female">Female</label><br />
+    </form>
+
+    <!-- Dropdown -->
+
+    <form>
+      <label for="cars">Choose a car:</label>
+      <select id="cars" name="cars">
+        <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+        <option value="mercedes">Mercedes</option>
+        <option value="audi">Audi</option>
+      </select>
+    </form>
+
+    <!-- Button -->
+
+    <form>
+      <button type="button">Click Me!</button>
+      <button type="reset">Reset</button>
+      <button type="submit">Submit</button>
+    </form>
+
+    <!-- File submit  -->
+
+    <form>
+      <label for="myfile">Select a file:</label>
+      <input type="file" id="myfile" name="myfile" /><br /><br />
+      <input type="submit" value="Upload" />
+    </form>
+
+    <!-- Hidden inputs -->
+    <form>
+      <input type="hidden" id="userid" name="userid" value="12345" />
+      <input type="submit" value="Submit" />
+    </form>
+
+    <!-- Color Inputs -->
+
+    <form>
+      <label for="color">Choose a color:</label>
+      <input type="color" id="color" name="color" /><br /><br />
+      <input type="submit" value="Submit" />
+    </form>
+
+    <!-- Datenad time -->
+    <form>
+      <label for="meeting-time">Choose a time for your meeting:</label>
+      <input
+        type="datetime-local"
+        id="meeting-time"
+        name="meeting-time"
+      /><br /><br />
+      <input type="submit" value="Submit" />
+    </form>
+  </body>
+</html>
