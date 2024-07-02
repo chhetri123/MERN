@@ -1,4 +1,4 @@
-Sure, here’s a detailed explanation for currying and partial application in JavaScript, formatted as a README file, without code examples:
+
 
 ---
 
