@@ -60,7 +60,7 @@ function totalPrice(price, taxRate) {
 }
 
 // Partially applied function with a fixed tax rate
-const totalPriceWithTax = partial(totalPrice, 0.2);
+const totalPriceWithTax = partial(totalPrice, 0.2, 0.3);
 
 // Usage
 const price = totalPriceWithTax(100); // 120
