@@ -114,3 +114,10 @@ Advanced Filtering:
 Pagination:
 
 - Implement pagination to handle displaying a large number of movies.
+
+  **Challange 5**
+
+1. Create a CLass CarCl that takes 2 parameters and add them to the properties.
+2. Add a getter called 'speedUS' which returns the current speed in mi/h (divide by 1.6);
+3. Add a setter called 'speedUS' which sets the current speed in mi/h (but converts it to km/h before storing the value, by multiplying the input by 1.6);
+4. Create a new car and experiment with the accelerate and brake methods, and with the getter and setter.

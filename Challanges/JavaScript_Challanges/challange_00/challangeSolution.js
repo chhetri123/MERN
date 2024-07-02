@@ -215,10 +215,12 @@ class MovieManager {
 
   //Pagination
   getMoviesByPage(page = 1, pageSize = 5) {
+    // page=2
     const startIndex = (page - 1) * pageSize;
-    return this.movies.slice(startIndex, startIndex + pageSize);
+    return this.movies.slice(startIndex, startIndex + pageSize); // 10, 10+5=15
   }
 }
+
 // OverAll intances
 
 // Create instances of Movie
@@ -263,3 +265,41 @@ filteredMovies.forEach((movie) => console.log(movie.getDetails()));
 console.log("\nMovies on Page 1:");
 const page1Movies = movieManager.getMoviesByPage(1, 2);
 page1Movies.forEach((movie) => console.log(movie.getDetails()));
+
+/***************
+ *
+ *  challange 4 solution
+ *
+ *
+ */
+
+class CarCl {
+  constructor(make, speed) {
+    this.make = make;
+    this.speed = speed;
+  }
+
+  accelerate() {
+    this.speed += 10;
+    console.log(`${this.make} is going at ${this.speed} km/h`);
+  }
+
+  brake() {
+    this.speed -= 5;
+    console.log(`${this.make} is going at ${this.speed} km/h`);
+  }
+
+  get speedUS() {
+    return this.speed / 1.6;
+  }
+
+  set speedUS(speed) {
+    this.speed = speed * 1.6;
+  }
+}
+
+const ford = new CarCl("Ford", 120);
+console.log(ford.speedUS);
+ford.accelerate();
+ford.accelerate();
+ford.brake();
