@@ -1,5 +1,3 @@
-
-
 ---
 
 # Currying and Partial Application in JavaScript
@@ -43,7 +41,3 @@ In partial application, you call a function with fewer arguments than it expects
 ## Conclusion
 
 Currying and partial application are useful techniques in JavaScript that enable you to create more modular, reusable, and flexible functions. By breaking down functions into smaller, single-argument functions (currying) or pre-filling some arguments (partial application), you can write cleaner and more maintainable code. Experimenting with these techniques will help you understand their benefits and how they can be applied to improve your JavaScript programming.
-
----
-
-Feel free to use and adjust this explanation to suit your needs.
