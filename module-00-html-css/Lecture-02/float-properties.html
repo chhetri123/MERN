@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Float Example</title>
+    <style>
+      .container {
+        width: 100%;
+        overflow: hidden; /* Clearfix hack to contain floated children */
+        background-color: #f4f4f4;
+        padding: 10px;
+      }
+      .item {
+        width: 30%;
+        margin: 10px;
+        float: left; /* Floats the items */
+        background-color: #4caf50;
+        color: white;
+        text-align: center;
+        padding: 20px;
+        box-sizing: border-box; /* Include padding and border in the element's total width and height */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="item">Item 1</div>
+      <div class="item">Item 2</div>
+      <div class="item">Item 3</div>
+    </div>
+  </body>
+</html>
