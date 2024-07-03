@@ -1,0 +1,127 @@
+<!-- FLoat text wrap up -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Float Image Example</title>
+    <style>
+      .float-left {
+        float: left;
+        margin: 0 15px 15px 0;
+        width: 200px;
+        height: 300px;
+      }
+    </style>
+  </head>
+  <body>
+    <img
+      src="https://static.remove.bg/sample-gallery/graphics/bird-thumbnail.jpg"
+      alt="Floating Image"
+      class="float-left"
+    />
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nec
+      velit sed nulla suscipit auctor. Nullam non risus eu eros tincidunt
+      vulputate. Nulla facilisi. Donec venenatis nulla a purus hendrerit, vitae
+      tristique purus dapibus.
+    </p>
+    <p>
+      Praesent sodales dui non metus varius, nec fringilla tortor malesuada.
+      Cras efficitur, sem at vestibulum hendrerit, enim risus pretium felis, nec
+      lacinia nunc est sit amet nisi. Sed vitae est vel leo suscipit tristique
+      quis eu erat.
+    </p>
+  </body>
+</html>
+
+<!--  Create a Three-Column Layout -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Three-Column Layout</title>
+    <style>
+      .column {
+        float: left;
+        width: 33.33%;
+        padding: 10px;
+        box-sizing: border-box;
+      }
+      .clearfix::after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+      .column1 {
+        background-color: lightblue;
+      }
+      .column2 {
+        background-color: lightgreen;
+      }
+      .column3 {
+        background-color: lightcoral;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="clearfix">
+      <div class="column column1">
+        <p>Column 1 content</p>
+      </div>
+      <div class="column column2">
+        <p>Column 2 content</p>
+      </div>
+      <div class="column column3">
+        <p>Column 3 content</p>
+      </div>
+    </div>
+  </body>
+</html>
+
+<!-- Build NavBar -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Navigation Bar</title>
+    <style>
+      .navbar {
+        background-color: #333;
+        overflow: hidden;
+      }
+      .navbar ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+      }
+      .navbar li {
+        float: left;
+      }
+      .navbar a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 20px;
+        text-decoration: none;
+      }
+      .navbar a:hover {
+        background-color: #ddd;
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="navbar">
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </body>
+</html>
