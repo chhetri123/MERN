@@ -3,47 +3,56 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Basic HTML Layout</title>
-    <!-- <style>
-      body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-      }
-      header {
-        background-color: #4caf50;
-        color: white;
-        padding: 1em;
-        text-align: center;
-      }
-      nav {
-        background-color: #333;
-        color: white;
-        padding: 0.5em;
-        text-align: center;
-      }
-      nav a {
-        color: white;
-        margin: 0 1em;
-        text-decoration: none;
-      }
-      section {
-        padding: 1em;
-      }
-      footer {
-        background-color: #333;
-        color: white;
-        text-align: center;
-        padding: 1em;
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-      }
-    </style> -->
+    <title>Layout</title>
   </head>
+  <style>
+    body {
+      font-family: "Courier New", Courier, monospace;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+    header {
+      background-color: #4caf50;
+      color: white;
+      padding: 10px;
+      text-align: center;
+    }
+    nav {
+      background-color: #333;
+      color: white;
+      padding: 5px;
+      text-align: center;
+    }
+    nav a {
+      color: white;
+      margin: 0 5px;
+      text-decoration: none;
+    }
+    section {
+      text-align: center;
+    }
+    section p {
+      text-align: left;
+      margin: 0 10px;
+    }
+    section img {
+      float: left;
+      margin: 0 10px;
+    }
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
   <body>
     <header>
-      <h1>My Basic Website</h1>
+      <h1>My Blog Website</h1>
     </header>
     <nav>
       <a href="#">Home</a>
@@ -52,14 +61,26 @@
       <a href="#">Contact</a>
     </nav>
     <section>
-      <h2>Welcome</h2>
+      <h1>Welcome to my blog page</h1>
+      <img src="./../Day 1/test.png" alt="test" height="150px" width="150px" />
       <p>
-        This is the main content area where you can add your text, images, and
-        other elements.
+        This is my simple daily activity page I will share my daily activities
+        here. I will try to keep it updated with my daily activities. Feel free
+        to comment if you have any questions or suggestions. I will also try to
+        keep it updated with my daily activities. Feel free to comment if you
+        have any questions or suggestions.
+        <br />
+        <br />
+        I will also try to keep it updated with my daily activities. Feel free
+        to comment if you have any questions or suggestions.
+        <br />
+        <br />
+        I will also try to keep it updated with my daily activities. Feel free
+        to comment if you have any questions or suggestions.
       </p>
     </section>
     <footer>
-      <p>Footer content here.</p>
+      <p>&copy; 2024 My Blog Website. All rights reserved.</p>
     </footer>
   </body>
 </html>
