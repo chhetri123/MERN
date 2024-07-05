@@ -16,13 +16,12 @@ export class View {
     this.table.style.opacity = 1;
 
     const fragment = document.createDocumentFragment();
-    data.data.forEach(this.createTableRow.bind(this, fragment));
-
+    data.data.forEach(this.createTableRow.bind(null, fragment));
     this.table.appendChild(fragment);
     this.loadMoreButton.style.display = "inline-block";
   }
 
-  createTableRow(fragment, data) {
+  createTableRow(fragment, data, i) {
     const tbody = document.createElement("tbody");
     tbody.innerHTML = `
       <tr>
