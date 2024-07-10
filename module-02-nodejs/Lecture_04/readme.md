@@ -18,7 +18,7 @@ server.listen(3000, "127.0.0.1", () => {
 });
 ```
 
-![HTTP Server](https://nodejs.dev/static/7737ebf5bc8ed5fa0f2696c08c21a1c4/0d5d5/http-https.png)
+![HTTP Server](https://res.cloudinary.com/practicaldev/image/fetch/s--KI6BAhvi--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/2efhol0cof1mhkerg8xl.jpg)
 
 ### Challenge
 
