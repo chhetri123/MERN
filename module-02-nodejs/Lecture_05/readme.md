@@ -14,9 +14,9 @@ Key features:
 - Content negotiation
 - Executable for generating applications quickly
 
-![Express Js](image.png)
+![Express Js](express_intro/image.png)
 
-![API ](image-1.png)
+![API ](express_intro/image-1.png)
 
 ## 6.2. Setting Up an Express Server
 
@@ -35,11 +35,47 @@ Save this as `server.js` and run it with `node server.js`.
 
 Express provides a powerful routing mechanism. You can define routes for different HTTP methods and URLs.
 
-## 6.4. Middleware in Express
+## 6.4 REST Architecture
+
+**REST (Representational State Transfer)** is an architectural style for designing networked applications. It relies on a stateless, client-server, cacheable communications protocol, most commonly the HTTP protocol.
+
+### Key Concepts of REST
+
+1. **Resources and URIs**
+
+   - **Resource:** Any information that can be named, such as a document, image, or a service. In REST, resources are identified by URIs (Uniform Resource Identifiers).
+   - **URI:** A uniform resource identifier is a string that provides a way to access a resource.
+
+2. **Stateless Communication**
+
+   - Each request from a client to a server must contain all the information needed to understand and process the request. The server does not store any context about the client between requests.
+
+3. **Client-Server Architecture**
+   - REST applications have a client-server architecture. The client handles the user interface and user experience, while the server manages data storage and business logic.
+
+### HTTP Methods in REST
+
+RESTful systems typically use HTTP methods to perform CRUD (Create, Read, Update, Delete) operations:
+
+- **GET:** Retrieve a resource.
+- **POST:** Create a new resource.
+- **PUT:** Update an existing resource.
+- **DELETE:** Remove a resource.
+- **PATCH:** Partially update a resource.
+
+![alt text](image.png)
+
+![alt text](image-1.png)
+
+![alt text](image-2.png)
+
+## 6.5. Middleware in Express
 
 Middleware functions have access to the request object (req), the response object (res), and the next middleware function in the application's request-response cycle, commonly denoted by `next`.
 
-## 6.5. Handling Form Data
+![alt text](image-3.png)
+
+## 6.6. Handling Form Data
 
 To handle form data, you need to use the `express.urlencoded()` middleware:
 
@@ -53,7 +89,7 @@ HTML form example:
 </form>
 ```
 
-## 6.6. Error Handling
+## 6.7. Error Handling
 
 Express comes with a built-in error handler. You can also write your own error handling middleware:
 
