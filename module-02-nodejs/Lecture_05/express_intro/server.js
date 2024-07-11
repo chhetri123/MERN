@@ -1,68 +1,59 @@
 const express = require("express");
+const fs = require("fs");
 const app = express();
-const port = 3000;
+const path = require("path");
+const filePath = path.join(__dirname, "public");
 
-// Middleware part
-
-const myMiddleware = (req, res, next) => {
-  console.log("This is middleware!");
-  next(); // Don't forget to call next()
-};
-
-// Use middleware
-app.use(myMiddleware);
-
-// Built-in middleware
-app.use(express.json()); // for parsing application/json
-app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
-
-// Middleware for specific route
-app.get("/protected", myMiddleware, (req, res) => {
-  res.send("Protected route");
-});
-
-// ROutes
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
-
-app.get("/about", (req, res) => {
-  res.send("About Page");
-});
-
-app.post("/submit", (req, res) => {
-  res.send("Form Submitted");
-});
-
-// Route parameters
-app.get("/users/:userId", (req, res) => {
-  res.send(`User ID: ${req.params.userId}`);
-});
-
-// Route handlers
-app
-  .route("/book")
-  .get((req, res) => {
-    res.send("Get a book");
+//
+app.use(express.static(filePath));
+app.use(express.json());
+app.use(
+  express.urlencoded({
+    extended: true,
   })
-  .post((req, res) => {
-    res.send("Add a book");
-  })
-  .put((req, res) => {
-    res.send("Update a book");
-  });
+);
 
-// Form data handling
+app.get("/json", (req, res) => {
+  const data = { name: "John Doe", age: 30 };
+  res.json(data);
+});
 
-// app.use(express.urlencoded({ extended: true }));
-
-app.post("/submit-form", (req, res) => {
-  const name = req.body.name;
-  const email = req.body.email;
-  res.send(`Form submitted with Name: ${name} and Email: ${email}`);
+app.post("/form-submit", (req, res) => {
+  const data = req.body;
+  const formData = fs.readFileSync("data.json", "utf8");
+  const parsedData = JSON.parse(formData);
+  parsedData.push(data);
+  fs.writeFileSync("data.json", JSON.stringify(parsedData));
+  res.send("Form submitted");
 });
 
 //
-app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
+app
+  .route("/")
+  .get((req, res) => {
+    res.sendFile(path.join(filePath, "index.html"));
+  })
+  .post((req, res) => {
+    const data = req.body;
+    fs.writeFileSync("data.json", JSON.stringify(data));
+    res.send("Client want to save data");
+  })
+  .patch((req, res) => {
+    res.send("file updated successful");
+  })
+  .delete((req, res) => {
+    fs.unlinkSync("data.json");
+    res.send("File deleted");
+  });
+
+//
+app.get("/home", (req, res) => {
+  res.sendFile(path.join(filePath, "home.html"));
+});
+
+app.get("/about", (req, res) => {
+  res.sendFile(path.join(filePath, "about.html"));
+});
+app.listen(8080, () => {
+  console.log("Server is running on port 8080");
 });
