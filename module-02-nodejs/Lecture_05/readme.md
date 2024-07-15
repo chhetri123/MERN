@@ -14,9 +14,9 @@ Key features:
 - Content negotiation
 - Executable for generating applications quickly
 
-![Express Js](express_intro/image.png)
+![Express Js](1_express_intro/image.png)
 
-![API ](express_intro/image-1.png)
+![API ](1_express_intro/image-1.png)
 
 ## 6.2. Setting Up an Express Server
 
