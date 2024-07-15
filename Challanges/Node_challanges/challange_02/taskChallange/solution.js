@@ -5,6 +5,19 @@ const port = 3000;
 
 app.use(express.json());
 
+// Validation
+// Middleware to validate the request body for new tasks
+const validateTask = (req, res, next) => {
+  const { id, title, completed } = req.body;
+  if (
+    typeof id !== "number" ||
+    typeof title !== "string" ||
+    typeof completed !== "boolean"
+  ) {
+    return res.status(400).json({ error: "Invalid task data" });
+  }
+  next();
+};
 // Read tasks from file
 const readTasks = () => {
   const data = fs.readFileSync("tasks.json");
@@ -30,28 +43,17 @@ app.post("/tasks", validateTask, (req, res) => {
   writeTasks(tasks);
   res.status(201).json(newTask);
 });
-
+// == ===
 // Delete a task
 app.delete("/tasks/:id", (req, res) => {
   const tasks = readTasks();
-  const updatedTasks = tasks.filter((task) => task.id !== req.params.id);
+  console.log(typeof req.params.id);
+  const updatedTasks = tasks.filter((task) => task.id != req.params.id);
+  console.log(updatedTasks);
   writeTasks(updatedTasks);
   res.status(204).send();
 });
 
-// Validation
-// Middleware to validate the request body for new tasks
-const validateTask = (req, res, next) => {
-  const { id, title, completed } = req.body;
-  if (
-    typeof id !== "string" ||
-    typeof title !== "string" ||
-    typeof completed !== "boolean"
-  ) {
-    return res.status(400).json({ error: "Invalid task data" });
-  }
-  next();
-};
 // // Search tasks by title
 app.get("/tasks/search", (req, res, next) => {
   try {
@@ -65,10 +67,10 @@ app.get("/tasks/search", (req, res, next) => {
 });
 
 // Update Task
-app.put("/tasks/:id", validateUpdatedTask, (req, res, next) => {
+app.put("/tasks/:id", (req, res, next) => {
   try {
     const tasks = readTasks();
-    const taskIndex = tasks.findIndex((task) => task.id === req.params.id);
+    const taskIndex = tasks.findIndex((task) => task.id == req.params.id);
     if (taskIndex !== -1) {
       const updatedTask = { ...tasks[taskIndex], ...req.body };
       tasks[taskIndex] = updatedTask;
