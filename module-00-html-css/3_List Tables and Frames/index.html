@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML Lists, Tables, and Frames</title>
+  </head>
+  <body>
+    <!-- Unordered List -->
+    <h2>3.1. Unordered Lists</h2>
+    <ul>
+      <li>Item 1</li>
+      <li>Item 2</li>
+      <li>Item 3</li>
+    </ul>
+
+    <!-- Ordered List -->
+    <h2>3.2. Ordered Lists</h2>
+    <ol>
+      <li>First item</li>
+      <li>Second item</li>
+      <li>Third item</li>
+    </ol>
+
+    <!-- Definition List -->
+    <h2>3.3. Definition Lists</h2>
+    <dl>
+      <dt>HTML</dt>
+      <dd>HyperText Markup Language</dd>
+      <dt>CSS</dt>
+      <dd>Cascading Style Sheets</dd>
+    </dl>
+
+    <!-- Creating Tables -->
+    <h2>3.4. Creating Tables</h2>
+    <table>
+      <tr>
+        <td>Row 1, Cell 1</td>
+        <td>Row 1, Cell 2</td>
+      </tr>
+      <tr>
+        <td>Row 2, Cell 1</td>
+        <td>Row 2, Cell 2</td>
+      </tr>
+    </table>
+
+    <!-- Table Headers -->
+    <h2>3.5. Table Headers</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Header 1</th>
+          <th>Header 2</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Row 1, Cell 1</td>
+          <td>Row 1, Cell 2</td>
+        </tr>
+        <tr>
+          <td>Row 2, Cell 1</td>
+          <td>Row 2, Cell 2</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Table Cells -->
+    <h2>3.6. Table Cells</h2>
+    <table>
+      <tr>
+        <td>Cell 1</td>
+        <td>Cell 2</td>
+        <td>Cell 3</td>
+      </tr>
+    </table>
+
+    <!-- Table Borders -->
+    <h2>3.7. Table Borders</h2>
+    <table style="border: 2px solid red">
+      <tr>
+        <td>Cell with red border</td>
+        <td>Another cell</td>
+      </tr>
+    </table>
+
+    <!-- Spanning Columns and Rows -->
+    <h2>3.8. Spanning Columns and Rows</h2>
+    <table>
+      <tr>
+        <td colspan="2">Cell spanning 2 columns</td>
+      </tr>
+      <tr>
+        <td rowspan="2">Cell spanning 2 rows</td>
+        <td>Cell 1</td>
+      </tr>
+      <tr>
+        <td>Cell 2</td>
+      </tr>
+    </table>
+
+    <!-- Introduction to Frames (Deprecated in HTML5) -->
+    <!-- Frames are not recommended for modern web development. -->
+    <h2>3.9. Introduction to Frames</h2>
+    <p>
+      Frames are used to divide the browser window into multiple sections, each
+      of which can load a separate HTML document.
+    </p>
+
+    <!-- Creating Frames (Deprecated in HTML5) -->
+    <h2>3.10. Creating Frames</h2>
+    <p>Example of a frameset (not recommended for use in modern HTML):</p>
+    <pre><code>&lt;frameset cols="50%, 50%"&gt;
+    &lt;frame src="frame1.html"&gt;
+    &lt;frame src="frame2.html"&gt;
+&lt;/frameset&gt;</code></pre>
+
+    <!-- Nested Frames (Deprecated in HTML5) -->
+    <h2>3.11. Nested Frames</h2>
+    <p>Example of nested frames (not recommended for use in modern HTML):</p>
+    <pre><code>&lt;frameset rows="50%, 50%"&gt;
+    &lt;frame src="frame1.html"&gt;
+    &lt;frameset cols="50%, 50%"&gt;
+        &lt;frame src="frame2.html"&gt;
+        &lt;frame src="frame3.html"&gt;
+    &lt;/frameset&gt;
+&lt;/frameset&gt;</code></pre>
+  </body>
+</html>
