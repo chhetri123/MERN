@@ -1,0 +1,71 @@
+<!-- FLoating Images  -->
+<style>
+  .left-img {
+    float: left;
+    margin: 0 15px 15px 0;
+  }
+  .right-img {
+    float: right;
+    margin: 0 0 15px 15px;
+  }
+</style>
+<img src="image.jpg" class="left-img" alt="Floating Left" />
+<p>
+  This text will wrap around the image floated to the left. The `float` property
+  allows text to flow around the image.
+</p>
+
+<img src="image.jpg" class="right-img" alt="Floating Right" />
+<p>
+  This text will wrap around the image floated to the right. The `float`
+  property is often used to create text flow around images.
+</p>
+
+<!-- Two column Layout  -->
+
+<style>
+  .left-column {
+    float: left;
+    width: 50%;
+    background-color: lightblue;
+  }
+  .right-column {
+    float: right;
+    width: 50%;
+    background-color: lightgreen;
+  }
+  .container::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+</style>
+<div class="container">
+  <div class="left-column">
+    <p>Content for the left column.</p>
+  </div>
+  <div class="right-column">
+    <p>Content for the right column.</p>
+  </div>
+</div>
+
+<!-- Clear Float  -->
+<style>
+  .clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+</style>
+<div class="clearfix">
+  <div class="left-column">
+    <p>Content for the left column.</p>
+  </div>
+  <div class="right-column">
+    <p>Content for the right column.</p>
+  </div>
+</div>
+<p>
+  This paragraph will be positioned below the floating columns because of the
+  clearfix.
+</p>
