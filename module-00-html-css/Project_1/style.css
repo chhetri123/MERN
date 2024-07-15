@@ -1,0 +1,92 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Red Rose", cursive;
+}
+body{
+  background: linear-gradient(
+    to right bottom, 
+    rgba(54, 59, 77, 0.847),
+    rgba(30, 40, 66, 0.822)),
+  url("./assets/pexels-maxyne-barcel-10402282\ 1.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;900&family=Nunito:ital,wght@1,700&family=Orbitron:wght@400;500&family=Oswald:wght@200;700&family=Revalia&family=Roboto+Serif:ital,opsz@1,8..144&display=swap');
+/* ------------------------------ */
+/* ---------- NAVBAR ------------ */
+/* ------------------------------ */
+.list li{
+  float: left;
+  position: relative;
+  left: 400px;
+  margin: 0px 20px;
+  list-style-type: none;
+  text-decoration: none;
+  bottom: 30px;
+  color: #FFC233;
+}
+.button-small{
+  position: relative;
+  left: 600px;
+  bottom: 30px;
+  padding: 5px 20px;
+  background-color: #FF505F;
+  color: #ffff;
+  border: 1px solid #FF505F;
+  
+}
+.logo{
+  width: 90px;
+  margin-top: 40px;
+  margin-left: 50px;
+}
+
+/* ------------------------------ */
+/* ---------- HERO ------------ */
+/* ------------------------------ */
+.hero-heading{
+    position: relative;
+    top: 50px;
+    left: 300px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 60px;
+    text-align: center;
+    width: 50%;
+    color: #FFC233;
+    
+}
+.bottom div img{
+  position: relative;
+  left: 1100px;
+  width: 100px;
+  height: 100px;
+  top: 120px;
+}
+.button-large{
+  position: relative;
+  left: 530px;
+  top: 50px;
+  padding: 10px 40px;
+  background-color: #FF505F;
+  border: 1px solid #FF505F;
+  color: #ffff;
+  text-align: center;
+}
+@media screen and (max-width:500px) {
+  .list li{
+    font-size: 40px;  
+  }
+  .hero-heading{
+     width: 170vw;
+     font-size: 80px;
+     text-align: center;
+    line-height: 100px;
+  }
+  .button-small{
+    font-size: 60px;
+   
+  }
+}
