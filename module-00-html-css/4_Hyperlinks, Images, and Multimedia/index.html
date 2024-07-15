@@ -1,0 +1,83 @@
+ndex.html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hyperlinks, Images, and Multimedia</title>
+  </head>
+  <body>
+    <!-- Creating Links -->
+    <h2>4.1. Creating Links</h2>
+    <a href="https://www.example.com">Visit Example</a>
+
+    <!-- Target Attribute -->
+    <h2>4.2. Target Attribute</h2>
+    <a href="https://www.example.com" target="_blank">Open in New Tab</a>
+
+    <!-- Email Links -->
+    <h2>4.3. Email Links</h2>
+    <a href="mailto:email@example.com">Send Email</a>
+
+    <!-- Adding Images -->
+    <h2>4.4. Adding Images</h2>
+    <img src="image.png" alt="Sample Image" />
+
+    <!-- Image Attributes -->
+    <h2>4.5. Image Attributes</h2>
+    <img src="image.png" alt="Sample Image" width="200" height="150" />
+
+    <!-- Image Links -->
+    <h2>4.6. Image Links</h2>
+    <a href="https://www.example.com">
+      <img src="image.jpg" alt="Link Image" />
+    </a>
+
+    <!-- Image Maps -->
+    <h2>4.7. Image Maps</h2>
+    <img src="image.png" alt="Planets" usemap="#planetmap" />
+    <map name="planetmap">
+      <area
+        shape="rect"
+        coords="0,0,82,126"
+        alt="Mercury"
+        href="mercury.html"
+      />
+      <area shape="circle" coords="90,58,3" alt="Venus" href="venus.html" />
+      <area
+        shape="poly"
+        coords="130,0,130,60,180,60,180,0"
+        alt="Mars"
+        href="mars.html"
+      />
+    </map>
+
+    <!-- Picture Element -->
+    <h2>4.8. Picture Element</h2>
+    <picture>
+      <source srcset="small.jpg" media="(max-width: 600px)" />
+      <source srcset="large.jpg" media="(min-width: 601px)" />
+      <img src="default.jpg" alt="Responsive Image" />
+    </picture>
+
+    <!-- Audio -->
+    <h2>4.9. Audio</h2>
+    <audio controls>
+      <source src="audio.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+
+    <!-- Video -->
+    <h2>4.10. Video</h2>
+    <video controls>
+      <source src="movie.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+
+    <!-- Embedding Media -->
+    <h2>4.11. Embedding Media</h2>
+    <embed src="media.swf" width="300" height="200" />
+    <object data="media.swf" width="300" height="200"></object>
+    <iframe src="https://www.example.com" width="300" height="200"></iframe>
+  </body>
+</html>
