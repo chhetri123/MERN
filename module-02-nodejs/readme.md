@@ -1,5 +1,3 @@
-Certainly! I'll incorporate the additional content into the existing table of contents, maintaining the same format. Here's the expanded and reformatted table:
-
 # Node.js Course Syllabus
 
 | Lecture | Topics                                                                                                                                                                                                                                                                                     |
