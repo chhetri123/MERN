@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Gradients Example</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #f0f0f0;
+      }
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+      .gradient-box {
+        width: 200px;
+        height: 200px;
+        border-radius: 10px;
+      }
+      .linear-gradient {
+        background: linear-gradient(to right, #3498db, #e74c3c);
+      }
+      .radial-gradient {
+        background: radial-gradient(circle, #3498db, #e74c3c);
+      }
+      .multiple-stops {
+        background: linear-gradient(
+          to right,
+          #3498db,
+          #e74c3c,
+          #2ecc71,
+          #f39c12
+        );
+      }
+      .repeating-linear-gradient {
+        background: repeating-linear-gradient(
+          45deg,
+          #3498db,
+          #3498db 10px,
+          #e74c3c 10px,
+          #e74c3c 20px
+        );
+      }
+    </style>
+  </head>
+  <body>
+    <h1>CSS Gradients Example</h1>
+    <div class="container">
+      <div>
+        <h2>Linear Gradient</h2>
+        <div class="gradient-box linear-gradient"></div>
+      </div>
+      <div>
+        <h2>Radial Gradient</h2>
+        <div class="gradient-box radial-gradient"></div>
+      </div>
+      <div>
+        <h2>Multiple Color Stops</h2>
+        <div class="gradient-box multiple-stops"></div>
+      </div>
+      <div>
+        <h2>Repeating Linear Gradient</h2>
+        <div class="gradient-box repeating-linear-gradient"></div>
+      </div>
+    </div>
+  </body>
+</html>

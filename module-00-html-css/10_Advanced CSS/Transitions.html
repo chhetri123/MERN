@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Transitions Example</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f0f0f0;
+      }
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: #3498db;
+        transition: all 0.3s ease;
+      }
+      .box:hover {
+        width: 200px;
+        height: 200px;
+        background-color: #e74c3c;
+        transform: rotate(45deg);
+      }
+      .button {
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #2ecc71;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+      }
+      .button:hover {
+        background-color: #27ae60;
+        transform: scale(1.1);
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h1>CSS Transitions Example</h1>
+      <p>Hover over the elements to see the transitions in action.</p>
+      <div class="box"></div>
+      <br />
+      <button class="button">Hover me!</button>
+    </div>
+  </body>
+</html>

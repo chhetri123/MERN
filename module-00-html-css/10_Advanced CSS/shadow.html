@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Shadows Example</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f0f0f0;
+      }
+      .container {
+        text-align: center;
+      }
+      .box-shadow {
+        width: 200px;
+        height: 100px;
+        background-color: #3498db;
+        margin: 20px auto;
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3),
+          -5px -5px 10px rgba(255, 255, 255, 0.7);
+      }
+      .text-shadow {
+        font-size: 36px;
+        font-weight: bold;
+        color: #2c3e50;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5),
+          -2px -2px 4px rgba(255, 255, 255, 0.5);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>CSS Shadows Example</h1>
+      <div class="box-shadow"></div>
+      <p class="text-shadow">Text with Shadow</p>
+    </div>
+  </body>
+</html>
