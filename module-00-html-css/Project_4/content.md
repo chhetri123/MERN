@@ -142,3 +142,7 @@ Privacy & terms
 - Pricing + features
 - CTA
 - Footer
+
+## Final view
+
+[Final Version Link](https://project4-ommi.netlify.app/)
