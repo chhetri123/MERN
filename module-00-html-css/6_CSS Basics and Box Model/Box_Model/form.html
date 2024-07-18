@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Form Styling</title>
+  </head>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Courier New", Courier, monospace;
+      align-items: center;
+      height: 100vh;
+    }
+    .form-container {
+      background-color: #ffffff;
+      border: 2px solid blue;
+      padding: 20px;
+      border-radius: 10px;
+      width: 400px;
+      margin: auto;
+    }
+    .form-container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    form label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: 900;
+    }
+    form input {
+      width: 90%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 2px solid #ddd;
+    }
+    input[type="checkbox"] {
+      width: auto;
+    }
+    input[type="radio"] {
+      width: auto;
+    }
+    input[type="submit"] {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #218838;
+    }
+  </style>
+  <body>
+    <div class="form-container">
+      <h2>Simple Form</h2>
+      <form>
+        <label for="text">Text:</label>
+        <input type="text" id="text" name="text" />
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" />
+
+        <label for="tel">Telephone:</label>
+        <input type="tel" id="tel" name="tel" />
+
+        <label for="number">Number:</label>
+        <input type="number" id="number" name="number" />
+
+        <label for="range">Range:</label>
+        <input type="range" id="range" name="range" />
+
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date" />
+
+        <label for="month">Month:</label>
+        <input type="month" id="month" name="month" />
+
+        <label for="week">Week:</label>
+        <input type="week" id="week" name="week" />
+
+        <label for="time">Time:</label>
+        <input type="time" id="time" name="time" />
+
+        <label for="datetime-local">Date and Time:</label>
+        <input
+          type="datetime-local"
+          id="datetime-local"
+          name="datetime-local"
+        />
+
+        <label for="url">URL:</label>
+        <input type="url" id="url" name="url" />
+
+        <label for="color">Color:</label>
+        <input type="color" id="color" name="color" />
+
+        <label for="file">File:</label>
+        <input type="file" id="file" name="file" />
+
+        <label for="checkbox">Checkbox:</label>
+        <input type="checkbox" id="checkbox" name="checkbox" />
+        I have a bike
+
+        <label for="radio">Radio:</label>
+        <input type="radio" id="radio" name="radio" />
+        i have an input
+
+        <label for="search">Search:</label>
+        <input type="search" id="search" name="search" />
+
+        <label for="submit">Submit:</label>
+        <input type="submit" id="submit" name="submit" value="Submit" />
+      </form>
+    </div>
+  </body>
+</html>
