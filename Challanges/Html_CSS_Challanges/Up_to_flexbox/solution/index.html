@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Personal Portfolio Website" />
+    <title>Personal Portfolio</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="header">
+      <div class="nav">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="main">
+      <div id="home" class="section">
+        <h1>Welcome to My Portfolio</h1>
+        <img src="images/profile.png" alt="Profile Picture" />
+        <p>Hi, I'm [Your Name], a web developer.</p>
+      </div>
+
+      <div id="about" class="section">
+        <h2>About Me</h2>
+        <table>
+          <tr>
+            <th>Institution</th>
+            <th>Degree</th>
+            <th>Year</th>
+          </tr>
+          <tr>
+            <td>ABC University</td>
+            <td>Bachelor of Science in Computer Science</td>
+            <td>2022</td>
+          </tr>
+          <!-- Add more rows as needed -->
+        </table>
+      </div>
+
+      <div id="projects" class="section">
+        <h2>Projects</h2>
+        <div class="project">
+          <img src="images/project1.png" alt="Project 1" />
+          <p>Project 1 Description</p>
+        </div>
+        <div class="project">
+          <img src="images/project2.png" alt="Project 2" />
+          <p>Project 2 Description</p>
+        </div>
+        <!-- Add more projects as needed -->
+      </div>
+
+      <div id="skills" class="section">
+        <h2>Skills</h2>
+        <ul>
+          <li>HTML</li>
+          <li>CSS</li>
+          <li>JavaScript</li>
+          <!-- Add more skills as needed -->
+        </ul>
+      </div>
+
+      <div id="contact" class="section">
+        <h2>Contact Me</h2>
+        <form>
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required />
+
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required />
+
+          <label for="subject">Subject:</label>
+          <input type="text" id="subject" name="subject" required />
+
+          <label for="message">Message:</label>
+          <textarea id="message" name="message" required></textarea>
+
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>&copy; 2024 [Your Name]. All rights reserved.</p>
+      <div class="social-media">
+        <a href="https://twitter.com">Twitter</a>
+        <a href="https://linkedin.com">LinkedIn</a>
+        <!-- Add more social media links as needed -->
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,143 @@
+
+    
+
+      body {
+         margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        color: #333;
+      }
+
+      .header {
+        background-color: #4a4a4a;
+        padding: 1rem;
+        position: sticky;
+        top: 0;
+      }
+
+      .nav ul {
+        list-style-type: none;
+        display: flex;
+        justify-content: center;
+      }
+
+      .nav ul li {
+        margin: 0 1rem;
+      }
+
+      .nav ul li a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      .main {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+
+      .section {
+        margin-bottom: 3rem;
+      }
+
+      h1, h2 {
+        color: #4a4a4a;
+        margin-bottom: 1rem;
+      }
+
+      #home {
+        text-align: center;
+      }
+
+      #home img {
+        width: 200px;
+        border-radius: 50%;
+        margin-bottom: 1rem;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      th, td {
+        border: 1px solid #ddd;
+        padding: 0.5rem;
+        text-align: left;
+      }
+
+      th {
+        background-color: #f2f2f2;
+      }
+
+      .project {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+      }
+
+      .project img {
+        width: 100px;
+        margin-right: 1rem;
+      }
+
+      #skills ul {
+        display: flex;
+        flex-wrap: wrap;
+        list-style-type: none;
+      }
+
+      #skills li {
+        background-color: #f2f2f2;
+        padding: 0.5rem 1rem;
+        margin: 0.5rem;
+        border-radius: 5px;
+      }
+
+      form {
+        width:50%;
+        display: flex;
+        flex-direction: column;
+      }
+
+      label {
+        margin-top: 1rem;
+      }
+
+      input, textarea {
+        padding: 1.1rem 2rem;
+        margin-top: 0.5rem;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+      }
+
+      button {
+        width:30%;
+        background-color: #4a4a4a;
+        color: white;
+        padding: 1.1rem 2rem;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 1rem;
+      }
+
+      .footer {
+        background-color: #4a4a4a;
+        color: white;
+        text-align: center;
+        padding: 1rem;
+        margin-top: 2rem;
+      }
+
+      .social-media {
+        margin-top: 1rem;
+      }
+
+      .social-media a {
+        color: white;
+        margin: 0 0.5rem;
+        text-decoration: none;
+      }
