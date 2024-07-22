@@ -64,10 +64,7 @@ Create a personal portfolio website that showcases your skills and projects usin
 
 3. **Footer**
    - Footer with social media links and copyright information.
-  
 
-### Demo 
+### Demo
 
 https://github.com/user-attachments/assets/8525225e-3f4d-4f4d-86ec-af9e7b40fc2a
-
-
