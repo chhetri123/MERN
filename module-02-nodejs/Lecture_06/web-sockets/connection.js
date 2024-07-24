@@ -28,27 +28,40 @@ io.on("connection", (socket) => {
 });
 */
 io.on("connection", (socket) => {
-  //create room and join
-  socket.on("joinRoom", (roomId) => {
-    socket.join(roomId);
-    socket.emit("joined", `successfully joined room ${roomId}`);
-
-    //   console.log(socket.id);
-    //   io.on('something',payload => {
-    //     socket.emit() //malai matrai
-    //     socket.broadcast.emit()
-    //     socket.to()
-    //       socket.to("nmfEe-HdOkTtHTitAAAF").emit('something-msg',payload)
-    //   })
+  console.log("user-information", socket.id);
+  socket.on("joinRoom", (roomID) => {
+    socket.join(parseInt(roomID));
+    console.log(socket.rooms, socket.id);
+    socket.emit("joined", `room ${roomID} joined successfully`);
   });
 
-  //send custom message
+  socket.on("leaveRoom", (roomID) => {
+    socket.leave(parseInt(roomID));
+    socket.emit("joined", `you have left ${roomID}`);
+  });
+
   socket.on("msg", (payload) => {
-    const { room, msg } = payload;
-    // console.log(room, msg, socket.rooms);
-    socket.to(room).emit("msg", msg);
-    // io.in(room.toString()).emit("msg", msg);
+    socket.to(payload.room).emit("msg", payload.msg);
   });
+  //create room and join
+  // socket.on("joinRoom", (roomId) => {
+  //   socket.join(roomId);
+  //   socket.emit("joined", `successfully joined room ${roomId}`);
+  //   console.log(socket.id);
+  //   io.on('something',payload => {
+  //     socket.emit() //malai matrai
+  //     socket.broadcast.emit()
+  //     socket.to()
+  //       socket.to("nmfEe-HdOkTtHTitAAAF").emit('something-msg',payload)
+  //   })
+  // });
+  //send custom message
+  // socket.on("msg", (payload) => {
+  // const { room, msg } = payload;
+  // console.log(room, msg, socket.rooms);
+  // socket.to(room).emit("msg", msg);
+  // io.in(room.toString()).emit("msg", msg);
+  // });
 });
 
 //sending message to ourself socket.emit
