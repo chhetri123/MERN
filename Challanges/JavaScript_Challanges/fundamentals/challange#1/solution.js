@@ -58,7 +58,7 @@ console.log("The temperature is " + (isEven ? "even" : "odd"));
 // Combine Solution 
 
 
-et temperature = 25;
+let temperature = 25;
 let isCelsius = true;
 
 // Convert temperature
