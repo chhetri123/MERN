@@ -27,13 +27,28 @@ io.on("connection", (socket) => {
     });
 });
 */
+
+//middleware
+io.use((socket, next) => {
+  try {
+    const userToken = socket.handshake.headers.authorization; //jwt //verify // _id // user // pass
+    if (!userToken) throw new Error("invalid user");
+    socket.data = userToken;
+    next();
+  } catch (err) {
+    console.group(err);
+  }
+});
+//
 io.on("connection", (socket) => {
-  console.log("user-information", socket.id);
-  socket.on("joinRoom", (roomID) => {
-    socket.join(parseInt(roomID));
-    console.log(socket.rooms, socket.id);
-    socket.emit("joined", `room ${roomID} joined successfully`);
-  });
+  socket.join(socket.data);
+  socket.emit("joined", `room ${socket.data} joined successfully`);
+  // console.log(socket.data);
+  // console.log("user-information", socket.id);
+  // socket.on("joinRoom", (roomID) => {
+  //   socket.join(parseInt(roomID));
+  //   console.log(socket.rooms, socket.id);
+  // });
 
   socket.on("leaveRoom", (roomID) => {
     socket.leave(parseInt(roomID));
@@ -43,6 +58,7 @@ io.on("connection", (socket) => {
   socket.on("msg", (payload) => {
     socket.to(payload.room).emit("msg", payload.msg);
   });
+
   //create room and join
   // socket.on("joinRoom", (roomId) => {
   //   socket.join(roomId);
