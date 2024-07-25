@@ -1,9 +1,16 @@
 import express from "express";
 import { Server } from "socket.io";
 import { createServer } from "http";
+import loginRouter from "./login.js";
+import db from "./db.js";
+import jwt from "jsonwebtoken";
+import userModel from "./model/user.model.js";
 
 const app = express();
 const httpServer = createServer(app);
+
+app.use(express.json());
+app.use(loginRouter);
 
 const io = new Server(httpServer);
 
@@ -27,22 +34,38 @@ io.on("connection", (socket) => {
     });
 });
 */
+// middleware(req,res,next);
+// app.get("/", controller);
+// middleware
+// controller
+//middleware
 
 //middleware
-io.use((socket, next) => {
+io.use(async (socket, next) => {
   try {
     const userToken = socket.handshake.headers.authorization; //jwt //verify // _id // user // pass
     if (!userToken) throw new Error("invalid user");
-    socket.data = userToken;
+    const validateToken = jwt.verify(userToken, "abcd");
+    const findUser = await userModel.findOne({ _id: validateToken._id });
+    socket.data = findUser;
     next();
   } catch (err) {
     console.group(err);
   }
 });
-//
+
+//group
+const users = [];
+
+//logical part
 io.on("connection", (socket) => {
-  socket.join(socket.data);
-  socket.emit("joined", `room ${socket.data} joined successfully`);
+  users.push(socket.data);
+  socket.join(socket.data._id);
+  socket.emit(
+    "joined",
+    `${socket.data.fullname} has joined ROOM:${socket.data._id} successfully`
+  );
+  console.log(`${socket.data.fullname} is online`);
   // console.log(socket.data);
   // console.log("user-information", socket.id);
   // socket.on("joinRoom", (roomID) => {
@@ -50,13 +73,22 @@ io.on("connection", (socket) => {
   //   console.log(socket.rooms, socket.id);
   // });
 
-  socket.on("leaveRoom", (roomID) => {
-    socket.leave(parseInt(roomID));
-    socket.emit("joined", `you have left ${roomID}`);
+  socket.on("online-users", () => {
+    socket.emit("online-users-list", users);
   });
 
   socket.on("msg", (payload) => {
     socket.to(payload.room).emit("msg", payload.msg);
+  });
+
+  socket.on("disconnect", () => {
+    socket.leave(socket.data._id);
+    socket.broadcast.emit("joined", `you have left ${socket.data._id}`);
+    const currentUsersIndex = users.findIndex(
+      (user) => user._id == socket.data._id
+    );
+    users.splice(currentUsersIndex, 1);
+    console.log(`${socket.data.fullname} is offline`);
   });
 
   //create room and join
@@ -85,6 +117,12 @@ io.on("connection", (socket) => {
 //sending message to everyone including me io.emit
 //joining room => socket.join(room_id)
 //send private message to room => socket.to(room_id).emit
+
+db.then(() => {
+  console.log("connected to database");
+}).catch((err) => {
+  console.log(err);
+});
 
 httpServer.listen(4040, () => {
   console.log("Server running at port 4040");
