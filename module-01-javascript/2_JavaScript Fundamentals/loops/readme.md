@@ -165,3 +165,179 @@ while (true) {
   console.log("This will run forever");
 }
 ```
+
+## Advance Loops( After Array and Object )
+
+### JavaScript Looping Constructs
+
+#### `forEach` Loop
+
+The `forEach` loop is a method available on arrays in JavaScript. It executes a provided function once for each array element. It's a convenient way to iterate over arrays without needing to manage the loop's index manually.
+
+**Syntax:**
+
+```js
+array.forEach(function (currentValue, index, array) {
+  // code to be executed for each element
+});
+```
+
+- `currentValue`: The current element being processed in the array.
+- `index` (Optional): The index of the current element being processed in the array.
+- `array` (Optional): The array `forEach` was called upon.
+
+**Example:**
+
+```js
+const numbers = [1, 2, 3, 4, 5];
+
+numbers.forEach(function (number) {
+  console.log(number);
+});
+
+// Output:
+// 1
+// 2
+// 3
+// 4
+// 5
+```
+
+In this example, the `forEach` method iterates over each element in the `numbers` array and logs it to the console.
+
+#### `for...of` Loop
+
+The `for...of` loop is a modern iteration statement for iterable objects like arrays, strings, maps, sets, and more. It creates a loop that iterates over iterable objects and executes a specified statement for each distinct property.
+
+**Syntax:**
+
+```js
+for (variable of iterable) {
+  // code to be executed for each element
+}
+```
+
+- `variable`: A different property value is assigned to `variable` on each iteration.
+- `iterable`: An object that has iterable properties (e.g., an array, a string, a map, a set).
+
+**Example:**
+
+```js
+const numbers = [1, 2, 3, 4, 5];
+
+for (const number of numbers) {
+  console.log(number);
+}
+
+// Output:
+// 1
+// 2
+// 3
+// 4
+// 5
+```
+
+In this example, the `for...of` loop iterates over each element in the `numbers` array and logs it to the console.
+
+### Key Differences
+
+- **Use Case:**
+
+  - `forEach`: Used exclusively for iterating over arrays.
+  - `for...of`: Used for iterating over any iterable objects (arrays, strings, maps, sets, etc.).
+
+- **Control Flow:**
+
+  - `forEach`: Cannot use `break` or `continue` statements to control the loop. It will always iterate through the entire array.
+  - `for...of`: Can use `break` and `continue` to control the loop.
+
+- **Scope:**
+  - `forEach`: The callback function creates a new scope for each iteration.
+  - `for...of`: The loop itself does not create a new scope; only the code block inside the loop creates a new scope.
+
+### Practical Examples
+
+#### Example 1: Using `forEach` to Log Array Elements
+
+```js
+const fruits = ["apple", "banana", "orange"];
+
+fruits.forEach((fruit) => {
+  console.log(fruit);
+});
+
+// Output:
+// apple
+// banana
+// orange
+```
+
+#### Example 2: Using `for...of` to Log Array Elements
+
+```js
+const fruits = ["apple", "banana", "orange"];
+
+for (const fruit of fruits) {
+  console.log(fruit);
+}
+
+// Output:
+// apple
+// banana
+// orange
+```
+
+#### Example 3: Using `for...of` to Log Characters in a String
+
+```js
+const message = "Hello, World!";
+
+for (const char of message) {
+  console.log(char);
+}
+
+// Output:
+// H
+// e
+// l
+// l
+// o
+// ,
+//
+// W
+// o
+// r
+// l
+// d
+// !
+```
+
+#### Example 4: Using `forEach` with Index and Array
+
+```js
+const numbers = [10, 20, 30];
+
+numbers.forEach((number, index, array) => {
+  console.log(`Index: ${index}, Value: ${number}, Array: ${array}`);
+});
+
+// Output:
+// Index: 0, Value: 10, Array: 10,20,30
+// Index: 1, Value: 20, Array: 10,20,30
+// Index: 2, Value: 30, Array: 10,20,30
+```
+
+#### Example 5: Using `for...of` to Iterate Over a Set
+
+```js
+const set = new Set(["apple", "banana", "orange"]);
+
+for (const fruit of set) {
+  console.log(fruit);
+}
+
+// Output:
+// apple
+// banana
+// orange
+```
