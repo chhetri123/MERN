@@ -10,7 +10,7 @@
 - Day 2: HTML5 Forms and Inputs
 - Day 3: CSS3 Selectors and Box Model
 - Day 4: CSS3 Flexbox and Grid
-- Day 5: Responsive Web Design
+- Day 5: Responsive Web Design / CSS Frameworks ( bootstrap, tailwind )
 
 ### Week 2: JavaScript Fundamentals
 
@@ -22,27 +22,27 @@
 
 ### Week 3: Advanced JavaScript
 
-- Day 11: ES6+ Features (let/const, Arrow functions, Template literals)
-- Day 12: ES6+ Features (Destructuring, Spread/Rest operators, Modules)
-- Day 13: Asynchronous JavaScript (Callbacks, Promises)
-- Day 14: Asynchronous JavaScript (Async/Await, Fetch API)
-- Day 15: Object-Oriented JavaScript (Prototypes, Classes)
+- Day 11: ES6+ Features (let/const, Arrow functions, Template literals, Destructuring, Spread/Rest operators, Modules)
+- Day 12: Asynchronous JavaScript (Callbacks, Promises)
+- Day 13: Asynchronous JavaScript (Async/Await, Fetch API)
+- Day 14: Object-Oriented JavaScript (Prototypes, Classes)
+- Day 15: Git version control
 
 ### Week 4: Node.js Fundamentals
 
-- Day 16: Introduction to Node.js and its Architecture
-- Day 17: Node.js Modules and npm
-- Day 18: File System Operations in Node.js
-- Day 19: Streams and Buffers in Node.js
-- Day 20: Building a Basic HTTP Server with Node.js
+- Day 16: Introduction to Node.js and npm modules
+- Day 17: File System Operations in Node.js
+- Day 18: Streams and Buffers in Node.js
+- Day 19: Building a Basic HTTP Server with Node.js
+- Day 20: Server side rendering
 
 ### Week 5: Express.js and MongoDB
 
-- Day 21: Express.js Basics and Routing
-- Day 22: Middleware in Express.js
-- Day 23: RESTful API Design with Express.js
-- Day 24: MongoDB Basics and CRUD Operations
-- Day 25: Mongoose ODM (Schemas, Models, Validation)
+- Day 21: Express.js Basics, Routing & Middleware in Express.js
+- Day 22: RESTful API Design with Express.js
+- Day 23: MongoDB Basics and CRUD Operations
+- Day 24: Mongoose ODM (Schemas, Models, Validation)
+- Day 25: Realtime application with socket.io
 
 ### Week 6: React Fundamentals
 
@@ -54,16 +54,16 @@
 
 ### Week 7: Advanced React and State Management
 
-- Day 31: React Hooks (useState, useEffect)
-- Day 32: Custom Hooks and useContext
-- Day 33: React Router (Setup, Basic and Nested Routing)
-- Day 34: Introduction to Redux (Store, Actions, Reducers)
-- Day 35: Redux Toolkit
+- Day 31: Introduction to Hooks (useState, useEffect, customHooks )
+- Day 32: React Router (Setup, Basic and Nested Routing)
+- Day 33: Introduction to Redux (Store, Actions, Reducers)
+- Day 34: Redux Toolkit
+- Day 35: Introduction to Next.js ( SSR & CSR )
 
 ### Week 8: Full Stack Integration and Deployment
 
 - Day 36: Connecting React Frontend to Express Backend
-- Day 37: Authentication and Authorization (JWT)
-- Day 38: Testing React Components (Jest, React Testing Library)
-- Day 39: Deployment Preparation (Environment Variables, Build Process)
+- Day 37: Authentication
+- Day 38: Unit tests (Jest, Other testing libraries )
+- Day 39: Deployment Preparation ( Introduction to cloud services )
 - Day 40: Deployment and Best Practices

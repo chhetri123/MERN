@@ -4,9 +4,11 @@ import { v4 } from "uuid";
 import userModel from "./model/user.model.js";
 import tokenModel from "./model/token.model.js";
 import mongoose from "mongoose";
+// import cookieParser from "cookie-parser";
 
 const app = express();
 
+// app.use(cookieParser());
 app.use(express.json());
 
 //validate user token
@@ -42,8 +44,12 @@ app.post("/login", async (req, res) => {
       { $set: { token: refreshToken, user: userFind._id } }, //setter
       { upsert: true } //return value
     );
+
+    // console.log(req.headers.cookie.split("=")[1]);
+    // res.cookie("name", refreshToken, { expires: new Date(30), httpOnly: true });
     res.json({ accessToken, refreshToken });
   } catch (err) {
+    console.log(err);
     res.json({ msg: "err" });
   }
 });
