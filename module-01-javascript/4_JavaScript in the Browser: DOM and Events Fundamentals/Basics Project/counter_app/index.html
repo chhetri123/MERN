@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="../../favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../../favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="../../favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="../../favicon/site.webmanifest" />
+    <title>Counter | DOM Projects</title>
+  </head>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,700&display=swap");
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Raleway", Fallback, sans-serif;
+      font-size: 16px;
+    }
+
+    body {
+      display: flex;
+      height: 100vh;
+      margin: 0 20;
+      justify-content: center;
+      align-items: center;
+      background-color: #f8f9fc;
+    }
+
+    main {
+      text-align: center;
+    }
+
+    main h2 {
+      font-size: 50px;
+      font-weight: 500;
+      margin-bottom: 5px;
+    }
+
+    main h1 {
+      font-size: 48px;
+      font-weight: 400;
+      margin-bottom: 10px;
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 2px;
+      background-color: rgba(162, 187, 241, 0.425);
+    }
+
+    .btn-area {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .btn-area .btn {
+      font-size: 1.8em;
+      height: 100%;
+      width: 100%;
+      padding: 5px 30px;
+      margin: 0 10px;
+      border: none;
+      background: rgba(46, 59, 230, 0.781);
+      color: white;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    button:active {
+      transform: scale(0.98);
+    }
+  </style>
+  <body>
+    <main>
+      <h2>Counter</h2>
+      <h1 id="counter-value">0</h1>
+      <section class="btn-area">
+        <button class="btn decrease">-</button>
+        <button class="btn reset">&#x21bb;</button>
+        <button class="btn increase">+</button>
+      </section>
+    </main>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
