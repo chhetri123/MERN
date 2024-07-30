@@ -1,0 +1,18 @@
+body {
+    background-color: #f8f9fa;
+    font-family: 'Arial', sans-serif;
+}
+
+#timer {
+    font-size: 5rem;
+    font-weight: bold;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+button {
+    font-size: 1.25rem;
+    padding: 10px 20px;
+}
