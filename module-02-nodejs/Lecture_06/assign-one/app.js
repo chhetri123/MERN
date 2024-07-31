@@ -9,6 +9,7 @@ import jwt from "jsonwebtoken";
 import userModel from "./model/user.model.js";
 import roomModel from "./model/room.model.js";
 import messageModel from "./model/messge.model.js";
+import userRouter from "./routes/user.routes.js";
 
 const app = express();
 const httpServer = createServer(app);
@@ -17,6 +18,7 @@ const io = new Server(httpServer);
 app.use(express.json());
 app.use("/room", roomRouter);
 app.use("/auth", authRouter);
+app.use("/user", userRouter);
 
 db.then(() => {
   console.log("Database connected");
@@ -84,9 +86,10 @@ io.on("connection", (socket) => {
   }
 });
 
+//
 process.on("unhandledRejection", (e) => {
+  //email server ( 'server' )
   console.log(e);
-  console.log("here");
 });
 // io.on("disconnect", (socket) => {
 //   console.log(socket);
