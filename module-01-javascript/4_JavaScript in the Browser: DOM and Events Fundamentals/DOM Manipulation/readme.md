@@ -217,4 +217,274 @@ Here is a comprehensive list of DOM methods, organized by category:
 - `element.draggable`
 - `element.contentEditable`
 
-## Examples of DOM Manipulation
+# Lecture: Understanding Event Propagation, Event Delegation, DOM Traversing, and Building a Tabbed Component
+
+## Table of Contents
+
+1. [Event Propagation: Bubbling and Capturing](#event-propagation-bubbling-and-capturing)
+2. [Event Propagation in Practice](#event-propagation-in-practice)
+3. [Event Delegation](#event-delegation)
+4. [DOM Traversing](#dom-traversing)
+5. [Building a Tabbed Component](#building-a-tabbed-component)
+
+---
+
+## Event Propagation: Bubbling and Capturing
+
+### Introduction
+
+Event propagation is a mechanism that defines how events travel through the DOM tree. There are three phases of event propagation:
+
+1. **Capturing Phase**: The event travels from the root to the target element.
+2. **Target Phase**: The event reaches the target element.
+3. **Bubbling Phase**: The event bubbles up from the target element to the root.
+
+### Bubbling
+
+In the bubbling phase, the event starts from the target element and moves up to the root. Only events that bubble will move up the DOM tree.
+
+### Capturing
+
+In the capturing phase, the event starts from the root and moves down to the target element. This phase is also known as the "trickling" phase.
+
+### Code Example
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Propagation</title>
+    <style>
+      .outer {
+        background-color: lightblue;
+        padding: 30px;
+      }
+      .middle {
+        background-color: lightcoral;
+        padding: 20px;
+      }
+      .inner {
+        background-color: lightgreen;
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="outer">
+      Outer Div
+      <div class="middle">
+        Middle Div
+        <div class="inner">Inner Div</div>
+      </div>
+    </div>
+
+    <script>
+      document
+        .querySelector(".outer")
+        .addEventListener("click", () => alert("Outer Div"), false);
+      document
+        .querySelector(".middle")
+        .addEventListener("click", () => alert("Middle Div"), false);
+      document
+        .querySelector(".inner")
+        .addEventListener("click", () => alert("Inner Div"), false);
+    </script>
+  </body>
+</html>
+```
+
+In this example, clicking the "Inner Div" will trigger alerts in the order: "Inner Div", "Middle Div", and "Outer Div" due to event bubbling.
+
+---
+
+## Event Propagation in Practice
+
+### Capturing Example
+
+By setting the `useCapture` parameter to `true`, you can observe capturing in action.
+
+### Code Example
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Capturing</title>
+  </head>
+  <body>
+    <div class="outer">
+      Outer Div
+      <div class="middle">
+        Middle Div
+        <div class="inner">Inner Div</div>
+      </div>
+    </div>
+
+    <script>
+      document
+        .querySelector(".outer")
+        .addEventListener("click", () => alert("Outer Div"), true);
+      document
+        .querySelector(".middle")
+        .addEventListener("click", () => alert("Middle Div"), true);
+      document
+        .querySelector(".inner")
+        .addEventListener("click", () => alert("Inner Div"), true);
+    </script>
+  </body>
+</html>
+```
+
+In this example, clicking the "Inner Div" will trigger alerts in the order: "Outer Div", "Middle Div", and "Inner Div" due to event capturing.
+
+---
+
+## Event Delegation
+
+### Introduction
+
+Event delegation is a technique that allows you to handle events at a higher level in the DOM, rather than adding event listeners to individual elements. This is particularly useful when dealing with dynamic elements.
+
+### Example Scenario
+
+Imagine you have a list of items, and you want to handle clicks on each item. Instead of attaching a click event listener to each item, you attach a single event listener to the parent element.
+
+### Code Example
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Delegation</title>
+  </head>
+  <body>
+    <ul id="itemList">
+      <li>Item 1</li>
+      <li>Item 2</li>
+      <li>Item 3</li>
+    </ul>
+
+    <script>
+      document
+        .getElementById("itemList")
+        .addEventListener("click", function (event) {
+          if (event.target.tagName === "LI") {
+            alert(event.target.textContent);
+          }
+        });
+    </script>
+  </body>
+</html>
+```
+
+In this example, clicking any list item will trigger an alert with the item's text content. The event listener is attached to the parent `<ul>` element, demonstrating event delegation.
+
+---
+
+## DOM Traversing
+
+### Introduction
+
+DOM traversing refers to the methods and properties used to navigate through the DOM tree. Common methods include:
+
+- `parentNode`
+- `childNodes`
+- `firstChild`
+- `lastChild`
+- `nextSibling`
+- `previousSibling`
+
+### Code Example
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM Traversing</title>
+  </head>
+  <body>
+    <div id="parent">
+      <p id="child1">Child 1</p>
+      <p id="child2">Child 2</p>
+      <p id="child3">Child 3</p>
+    </div>
+
+    <script>
+      const child1 = document.getElementById("child1");
+      const parent = child1.parentNode;
+      console.log(parent); // Logs the parent div
+
+      const nextSibling = child1.nextSibling;
+      console.log(nextSibling); // Logs the next sibling (child2)
+    </script>
+  </body>
+</html>
+```
+
+In this example, we navigate the DOM to access the parent of `child1` and its next sibling.
+
+---
+
+## Building a Tabbed Component
+
+### Introduction
+
+A tabbed component allows users to switch between different sections of content without navigating to a new page.
+
+### HTML Structure
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tabbed Component</title>
+    <style>
+      .tab {
+        display: none;
+      }
+      .tab.active {
+        display: block;
+      }
+      .tabs button {
+        margin-right: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="tabs">
+      <button data-tab="tab1">Tab 1</button>
+      <button data-tab="tab2">Tab 2</button>
+      <button data-tab="tab3">Tab 3</button>
+    </div>
+    <div id="tab1" class="tab active">Content for Tab 1</div>
+    <div id="tab2" class="tab">Content for Tab 2</div>
+    <div id="tab3" class="tab">Content for Tab 3</div>
+
+    <script>
+      document
+        .querySelector(".tabs")
+        .addEventListener("click", function (event) {
+          if (event.target.tagName === "BUTTON") {
+            const tabId = event.target.getAttribute("data-tab");
+            document.querySelectorAll(".tab").forEach(function (tab) {
+              tab.classList.remove("active");
+            });
+            document.getElementById(tabId).classList.add("active");
+          }
+        });
+    </script>
+  </body>
+</html>
+```
+
+In this example, clicking on a tab button shows the corresponding content and hides the others. This demonstrates how to build a simple tabbed component using event delegation.
