@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const messageSchema = mongoose.Schema({
   sender: {
-    type: mongoose.Types.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: "User",
     required: true,
   },
@@ -20,7 +20,7 @@ const messageSchema = mongoose.Schema({
     required: false,
   },
   room: {
-    type: mongoose.Types.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: "Room",
     required: true,
   },
