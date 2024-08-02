@@ -56,22 +56,33 @@ logMessage(getMessage); // Hello, World!
 
 // 6. Higher-Order Functions
 function applyOperation(arr, operation) {
-  return arr.map(operation);
+  return operation(arr);
 }
 
 function square(num) {
-  return num * num;
+  let square = 1;
+  for (let i = 0; i < num.length; i++) {
+    square = num[i] * num[i];
+  }
+  return square;
 }
 
 console.log(applyOperation([1, 2, 3], square)); // [1, 4, 9]
 
 // 7. Higher-Order Functions
 function filterNumbers(arr, predicate) {
-  return arr.filter(predicate);
+  return predicate(arr);
 }
 
 function isEven(num) {
-  return num % 2 === 0;
+  let evenNumber;
+  for (let i = 0; i < num.length; i++) {
+    if (num % 2 === 0) {
+      evenNumber = num;
+      break;
+    }
+  }
+  return evenNumber;
 }
 
 console.log(filterNumbers([1, 2, 3, 4], isEven)); // [2, 4]
