@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Homepage from "./pages/homepage";
 import AboutPage from "./pages/aboutpage";
 import Navbar from "./component/navbar";
@@ -9,8 +9,18 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route path="/" Component={Homepage} />
-          <Route path="/about" Component={AboutPage} />
+          <Route
+            path="/"
+            Component={() => {
+              return <Homepage />;
+            }}
+          />
+          <Route
+            path="/movies/details/:id"
+            Component={() => {
+              return <AboutPage />;
+            }}
+          />
         </Routes>
       </BrowserRouter>
     </div>
