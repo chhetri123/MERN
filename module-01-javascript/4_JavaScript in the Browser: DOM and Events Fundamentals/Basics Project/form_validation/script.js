@@ -1,5 +1,5 @@
 const form = document.getElementById("form");
-const userName = document.getElementById("username");
+const userName = document.getElementById("userName");
 const email = document.getElementById("email");
 // const phone = document.getElementById('phone');
 const password = document.getElementById("password");
@@ -28,7 +28,7 @@ const isEmail = (emailVal) => {
 };
 
 const validate = () => {
-  const userNameVal = username.value.trim();
+  const userNameVal = userName.value.trim();
   const emailVal = email.value.trim();
   // const phoneVal = phone.value.trim();
   const passwordVal = password.value.trim();
@@ -36,11 +36,11 @@ const validate = () => {
 
   // validate userName
   if (userNameVal === "") {
-    setErrorMsg(username, "Username cannot be blank");
+    setErrorMsg(userName, "userName cannot be blank");
   } else if (userNameVal.length <= 2) {
-    setErrorMsg(username, "Enter min 3 char");
+    setErrorMsg(userName, "Enter min 3 char");
   } else {
-    setSuccessmsg(username);
+    setSuccessmsg(userName);
   }
 
   // validate email
