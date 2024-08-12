@@ -1,25 +1,24 @@
 import { useState, useEffect } from "react";
-
+import { addTask, getTask } from "../utils/localTask";
 const Details = () => {
   const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
-    const storedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
+    const storedTasks = getTask();
     setTasks(storedTasks);
   }, []);
 
   const handleDelete = (id) => {
     const updatedTasks = tasks.filter((task) => task.id !== id);
     setTasks(updatedTasks);
-    localStorage.setItem("tasks", JSON.stringify(updatedTasks));
   };
 
   const handleStatusChange = (id, status) => {
     const updatedTasks = tasks.map((task) =>
       task.id === id ? { ...task, status } : task
     );
+    addTask(updatedTasks);
     setTasks(updatedTasks);
-    localStorage.setItem("tasks", JSON.stringify(updatedTasks));
   };
 
   return (

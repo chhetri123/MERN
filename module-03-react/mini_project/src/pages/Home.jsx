@@ -1,13 +1,21 @@
+import React, { useEffect, useState } from "react";
+import WelcomeMessage from "./../components/Home/WelcomeMessage";
+import MotivationalQuote from "./../components/Home/MotivationQuotes";
+import TaskSummary from "./../components/Home/TaskSummary";
+import { getTask } from "../utils/localTask";
+
 const Home = () => {
+  const [tasks, setTasks] = useState([]);
+  useEffect(() => {
+    const storedTasks = getTask();
+    setTasks(storedTasks);
+  }, []);
   return (
-    <div className="bg-gradient-to-r from-blue-500 to-teal-400 h-screen flex items-center justify-center">
-      <div className="text-center text-white">
-        <h1 className="text-5xl font-bold mb-4">Welcome to Task Manager</h1>
-        <p className="text-lg font-light">
-          Manage your tasks efficiently and stay organized.
-        </p>
-      </div>
-    </div>
+    <>
+      <WelcomeMessage />
+      <MotivationalQuote />
+      <TaskSummary tasks={tasks} />
+    </>
   );
 };
 
