@@ -131,20 +131,7 @@ You are building a to-do list manager for a productivity app. The app should all
 4. Implement a method to get the total count of tasks.
 5. Use DOM manipulation to display the tasks and task count in the web page.
 
-### Question 2: Inventory Management System
-
-**Scenario:**
-You are developing an inventory management system for a small business. The system should track products, add new products, remove products, update product quantities, and display products based on their quantity status (in stock/out of stock).
-
-**Requirements:**
-
-1. Create a `Product` class with properties for the product name, quantity, and a method to update the quantity.
-2. Implement an `Inventory` class that manages an array of `Product` objects.
-3. Provide methods to add a new product, remove a product by its name, update a product’s quantity, and filter products based on their quantity status.
-4. Implement a method to display the total number of products.
-5. Use DOM manipulation to display the list of products and their quantities on the web page.
-
-### Question 3: Library System
+### Question 2: Library System
 
 **Scenario:**
 You are creating a library system that allows users to manage their book collections. The system should allow users to add books, remove books, search for books by title, and display the total number of books. Additionally, users should be able to filter books by their reading status (read/unread).
@@ -157,19 +144,7 @@ You are creating a library system that allows users to manage their book collect
 4. Implement a method to get the total count of books.
 5. Use DOM manipulation to display the list of books, their details, and the total book count on the web page.
 
-### Question 4: Event Scheduler
-
-**Scenario:**
-You are building an event scheduler application. The application should allow users to add events, remove events, update event details, filter events by date, and display the total number of events.
-
-**Requirements:**
-
-1. Create an `Event` class with properties for the event name, date, and location.
-2. Implement an `EventScheduler` class that manages an array of `Event` objects.
-3. Provide methods to add a new event, remove an event by its name, update an event’s details, and filter events by date.
-4. Implement a method to display the total number of events in consoles.
-
-### Question 5: Expense Tracker
+### Question 3: Expense Tracker
 
 **Scenario:**
 You are creating an expense tracker application to help users manage their expenses. The application should allow users to add expenses, remove expenses, categorize expenses, filter expenses by category, and display the total amount spent.
@@ -181,3 +156,16 @@ You are creating an expense tracker application to help users manage their expen
 3. Provide methods to add a new expense, remove an expense by its description, categorize expenses, and filter expenses by category.
 4. Implement a method to calculate and display the total amount spent.
 5. Use DOM manipulation to display the list of expenses, their details, and the total amount spent on the web page.
+
+### Question 4: Inventory Management System
+
+**Scenario:**
+You are developing an inventory management system for a small business. The system should track products, add new products, remove products, update product quantities, and display products based on their quantity status (in stock/out of stock).
+
+**Requirements:**
+
+1. Create a `Product` class with properties for the product name, quantity, and a method to update the quantity.
+2. Implement an `Inventory` class that manages an array of `Product` objects.
+3. Provide methods to add a new product, remove a product by its name, update a product’s quantity, and filter products based on their quantity status.
+4. Implement a method to display the total number of products.
+5. Use DOM manipulation to display the list of products and their quantities on the web page.
