@@ -155,3 +155,42 @@ src/
   - Use `useState` to calculate and store the task summary.
   - Use `useEffect` to update the summary whenever tasks are added, completed, or deleted.
   - Display the summary as a visual widget or text block on the Home page.
+
+### 4. From Validation
+
+**Form Validation:**
+
+- Implement validation logic for the form fields:
+  - **Title:** Required, should not exceed 50 characters.
+  - **Description:** Required, should not exceed 200 characters.
+  - **Status:** Must be either "pending" or "completed".
+- If any validation errors occur, they should be displayed next to the respective form fields.
+
+**Form Submission:**
+
+- On form submission, the task should be validated.
+- If there are no validation errors, the task should be saved to local storage.
+- The form should reset after successful submission.
+
+**User Interface:**
+
+- Style the form using Tailwind CSS.
+- Ensure that the form has a clean and user-friendly interface.
+- Highlight fields with errors using a red border.
+
+6. **File Structure:**
+
+   - Organize your project files using the following structure:
+     ```
+     src/
+     ├── components/
+     │
+     ├── utils/
+     │   └── validation.js
+     └── App.js
+     ```
+
+**Validation Logic:**
+
+- Create a separate `utils/validation.jsx` file where you will implement the validation logic.
+- Import the validation function into your `form.jsx` component and use it during form submission.
