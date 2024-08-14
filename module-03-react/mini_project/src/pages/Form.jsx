@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { validateTask } from "./../utils/validation";
+import { addTask, getTask } from "../utils/localTask";
 
 const Form = () => {
   const [task, setTask] = useState({
@@ -26,9 +27,9 @@ const Form = () => {
       return;
     }
 
-    const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+    const tasks = getTask();
     tasks.push({ ...task, id: Math.random().toString(36).substr(2, 9) });
-    localStorage.setItem("tasks", JSON.stringify(tasks));
+    addTask(tasks);
     setTask({ title: "", description: "", status: "pending" });
     setErrors({});
 
