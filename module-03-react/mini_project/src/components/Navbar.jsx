@@ -11,7 +11,7 @@ const Navbar = () => {
         </li>
         <li>
           <Link to="/form" className="text-white hover:text-blue-400">
-            Form
+            Task Form
           </Link>
         </li>
         <li>

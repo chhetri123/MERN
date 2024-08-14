@@ -19,3 +19,19 @@ export const validateTask = (task) => {
 
   return errors;
 };
+
+export const validateUser = (user) => {
+  const errors = {};
+
+  if (!user.name || user.name.trim() === "") {
+    errors.name = "Name is required.";
+  } else if (user.name.length < 3 || user.name.length > 50) {
+    errors.name = "Name should be in range 3-50 characters.";
+  }
+
+  if (!user.email || !user.email.includes("@")) {
+    errors.email = "Invalid email address.";
+  }
+
+  return errors;
+};

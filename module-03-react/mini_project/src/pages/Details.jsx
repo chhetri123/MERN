@@ -1,15 +1,16 @@
 import { useState, useEffect } from "react";
-import { addTask, getTask } from "../utils/localTask";
+import { addData, getData } from "../utils/localData";
 const Details = () => {
   const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
-    const storedTasks = getTask();
+    const storedTasks = getData("tasks");
     setTasks(storedTasks);
   }, []);
 
   const handleDelete = (id) => {
     const updatedTasks = tasks.filter((task) => task.id !== id);
+    addData("tasks", updatedTasks);
     setTasks(updatedTasks);
   };
 
@@ -17,7 +18,7 @@ const Details = () => {
     const updatedTasks = tasks.map((task) =>
       task.id === id ? { ...task, status } : task
     );
-    addTask(updatedTasks);
+    addData("tasks", updatedTasks);
     setTasks(updatedTasks);
   };
 

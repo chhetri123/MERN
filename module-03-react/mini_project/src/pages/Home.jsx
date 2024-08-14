@@ -1,20 +1,23 @@
 import React, { useEffect, useState } from "react";
 import WelcomeMessage from "./../components/Home/WelcomeMessage";
 import MotivationalQuote from "./../components/Home/MotivationQuotes";
-import TaskSummary from "./../components/Home/TaskSummary";
-import { getTask } from "../utils/localTask";
+import Summary from "./../components/Home/Summary";
+import { getData } from "../utils/localData";
 
 const Home = () => {
   const [tasks, setTasks] = useState([]);
+  const [users, setUsers] = useState([]);
   useEffect(() => {
-    const storedTasks = getTask();
+    const storedTasks = getData("tasks");
+    const storedUsers = getData("users");
     setTasks(storedTasks);
+    setUsers(storedUsers);
   }, []);
   return (
     <>
       <WelcomeMessage />
       <MotivationalQuote />
-      <TaskSummary tasks={tasks} />
+      <Summary tasks={tasks} users={users} />
     </>
   );
 };
