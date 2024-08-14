@@ -194,3 +194,25 @@ src/
 
 - Create a separate `utils/validation.jsx` file where you will implement the validation logic.
 - Import the validation function into your `form.jsx` component and use it during form submission.
+
+### 5. Create the ReusableForm Component
+
+1. **Create a new component file** named `ReusableForm.jsx`.
+
+2. **Define the ReusableForm component** that accepts `config`, `initialData`, `onSubmit`, and `btnContent` as props.
+3. **Manage the form state** using the `useState` hook to track input values and validation errors.
+
+4. **Implement the handleChange function** to update the form state based on user input.
+
+5. **Implement the validate function** to ensure that required fields are filled before submitting the form.
+
+6. **Create a handleSubmit function** that validates the form and calls the `onSubmit` function with the form data.
+
+7. **Render the form elements** dynamically based on the `config` prop, which defines the fields, their types, and other attributes (e.g., `label`, `placeholder`, `options`).
+
+8. **Handle different input types** (`text`, `textarea`, `select`) within the form based on the `type` field in the configuration.
+
+### 6. Assign Users to Tasks
+
+- Implement functionality to assign tasks to specific users using the reusable form.
+- Ensure that the form dynamically adjusts based on the task or user creation context.
