@@ -123,13 +123,60 @@ Create a constructor function `Pet` to manage pet details like name, type, and a
 **Scenario:**
 You are building a to-do list manager for a productivity app. The app should allow users to add tasks, remove tasks, mark tasks as completed, filter tasks by their status (completed/incomplete), and display the total count of tasks.
 
-**Requirements:**
+**Instructions:**
 
-1. Implement a `Task` class with properties for the task description and completion status.
-2. Create a `ToDoList` class that manages an array of `Task` objects.
-3. Provide methods to add a new task, remove a task by its index, mark a task as completed by its index, and filter tasks by their status.
-4. Implement a method to get the total count of tasks.
-5. Use DOM manipulation to display the tasks and task count in the web page.
+1. **Task Class:**
+
+   - Implement a `Task` class with the following properties and methods:
+     - **Properties:**
+       - `description` (string): The text of the task.
+       - `completed` (boolean): Indicates whether the task is completed.
+     - **Methods:**
+       - `markCompleted()`: Sets the `completed` property to `true`.
+
+2. **ToDoList Class:**
+
+   - Create a `ToDoList` class to manage an array of `Task` objects.
+   - **Methods:**
+     - `addTask(description)`: Adds a new `Task` with the given description to the list.
+     - `removeTask(index)`: Removes the task at the specified index.
+     - `markTaskCompleted(index)`: Marks the task at the specified index as completed.
+     - `getTotalCount()`: Returns the total number of tasks in the list.
+     - `filterTasksByStatus(status)`: Filters tasks based on their completion status. (`status` can be `'completed'` or `'incomplete'`.)
+
+3. **DOM Manipulation:**
+
+   - Set up an HTML page with the following elements:
+     - An input field with the ID `taskDescription` for entering new tasks.
+     - A button with the ID `addTaskButton` to add the new task.
+     - An unordered list with the ID `taskList` to display tasks.
+     - A span with the ID `totalCount` to show the total number of tasks.
+   - Use JavaScript to:
+     - Add an event listener to the `addTaskButton` that retrieves the value from the `taskDescription` input field, adds it as a new task, clears the input field, and updates the displayed task list.
+     - Implement the `displayTasks()` function to:
+       - Clear the current list.
+       - Create a list item (`<li>`) for each task, with a button to mark the task as completed.
+       - Add the class `completed` to completed tasks for styling.
+       - Append the task items and buttons to the `taskList`.
+       - Update the `totalCount` span with the total number of tasks.
+
+4. **Additional Features:**
+   - Implement task filtering functionality. Add a dropdown or set of buttons to filter tasks based on their completion status (e.g., "All", "Completed", "Incomplete"). Update the displayed task list based on the selected filter.
+
+**Example HTML Structure:**
+
+- Use solution index.html file
+
+**JavaScript Requirements:**
+
+- Implement the `Task` and `ToDoList` classes in `script.js`.
+- Ensure that your code effectively interacts with the HTML elements and updates the task list and total count as specified.
+
+**Hints:**
+
+- Use `document.createElement` to create new DOM elements.
+- Use `element.appendChild` to add elements to the DOM.
+- Update the `displayTasks` function to handle task filtering based on status.
 
 ### Question 2: Library System
 
