@@ -1,16 +1,33 @@
+import Lists from "./component/lists";
 import { useContext } from "react";
-import { listParams } from "./context/list.context";
-import ListItem from "./component/list";
+import { ListParams } from "./context/list.context";
 
 function App() {
-  const { list, clearAll } = useContext(listParams);
+  const { list, addList, addCountry } = useContext(ListParams);
+
   return (
     <div>
-      <h2>This is app </h2>
-      {JSON.stringify(list)}
-      <button onClick={() => clearAll()}>Clear All</button>
-
-      <ListItem />
+      <h2>Im inside App Component</h2>
+      <ul>
+        {list.map((item, index) => (
+          <li key={index}>{item}</li>
+        ))}
+      </ul>
+      <button
+        onClick={() => {
+          addList("new user");
+        }}
+      >
+        Add new user
+      </button>
+      <button
+        onClick={() => {
+          addCountry("new country");
+        }}
+      >
+        Add new country
+      </button>
+      <Lists />
     </div>
   );
 }

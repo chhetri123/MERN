@@ -1,52 +1,53 @@
-import proptype from "prop-types";
-import { createContext } from "react";
-import { useState } from "react";
+import { any } from "prop-types";
+import { createContext, useState } from "react"; //context =>
 
 //context create
-export const listParams = createContext({
+export const ListParams = createContext({
   list: [],
-  addItem: () => {},
-  clearAll: () => {},
+  country: [],
+  addList: () => {},
+  addCountry: () => {},
 });
 
-//provider create
-export const ListContextProvider = ({ children }) => {
-  const [list, setList] = useState([
-    {
-      name: "Nikhil",
-      number: 20,
-    },
-    {
-      name: "Diksha",
-      number: 30,
-    },
-    {
-      name: "suzit",
-      number: 50,
-    },
+//context provider
+export const ListProvider = ({ children }) => {
+  const [usersList, setUsers] = useState([
+    "nikhil",
+    "aaditya",
+    "diksha",
+    "suzit",
+  ]);
+  const [country, setCountry] = useState([
+    "nepal",
+    "china",
+    "usa",
+    "australia",
   ]);
 
-  const addItem = (name, number) => {
-    setList((prev) => {
-      return [{ name, number }, ...prev];
+  const addNewList = (user) => {
+    setUsers((prev) => {
+      return [user, ...prev];
     });
   };
-  const clearAll = () => {
-    setList([]);
+  const addNewCountry = (country) => {
+    setCountry((prev) => {
+      return [country, ...prev];
+    });
   };
   return (
-    <listParams.Provider
+    <ListParams.Provider
       value={{
-        list: list,
-        addItem: addItem,
-        clearAll: clearAll,
+        list: usersList,
+        addList: addNewList,
+        country: country,
+        addCountry: addNewCountry,
       }}
     >
       {children}
-    </listParams.Provider>
+    </ListParams.Provider>
   );
 };
 
-ListContextProvider.propTypes = {
-  children: proptype.any,
+ListProvider.propTypes = {
+  children: any,
 };
