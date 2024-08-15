@@ -123,28 +123,62 @@ Create a constructor function `Pet` to manage pet details like name, type, and a
 **Scenario:**
 You are building a to-do list manager for a productivity app. The app should allow users to add tasks, remove tasks, mark tasks as completed, filter tasks by their status (completed/incomplete), and display the total count of tasks.
 
-**Requirements:**
+**Instructions:**
 
-1. Implement a `Task` class with properties for the task description and completion status.
-2. Create a `ToDoList` class that manages an array of `Task` objects.
-3. Provide methods to add a new task, remove a task by its index, mark a task as completed by its index, and filter tasks by their status.
-4. Implement a method to get the total count of tasks.
-5. Use DOM manipulation to display the tasks and task count in the web page.
+1. **Task Class:**
 
-### Question 2: Inventory Management System
+   - Implement a `Task` class with the following properties and methods:
+     - **Properties:**
+       - `description` (string): The text of the task.
+       - `completed` (boolean): Indicates whether the task is completed.
+     - **Methods:**
+       - `markCompleted()`: Sets the `completed` property to `true`.
 
-**Scenario:**
-You are developing an inventory management system for a small business. The system should track products, add new products, remove products, update product quantities, and display products based on their quantity status (in stock/out of stock).
+2. **ToDoList Class:**
 
-**Requirements:**
+   - Create a `ToDoList` class to manage an array of `Task` objects.
+   - **Methods:**
+     - `addTask(description)`: Adds a new `Task` with the given description to the list.
+     - `removeTask(index)`: Removes the task at the specified index.
+     - `markTaskCompleted(index)`: Marks the task at the specified index as completed.
+     - `getTotalCount()`: Returns the total number of tasks in the list.
+     - `filterTasksByStatus(status)`: Filters tasks based on their completion status. (`status` can be `'completed'` or `'incomplete'`.)
 
-1. Create a `Product` class with properties for the product name, quantity, and a method to update the quantity.
-2. Implement an `Inventory` class that manages an array of `Product` objects.
-3. Provide methods to add a new product, remove a product by its name, update a product’s quantity, and filter products based on their quantity status.
-4. Implement a method to display the total number of products.
-5. Use DOM manipulation to display the list of products and their quantities on the web page.
+3. **DOM Manipulation:**
 
-### Question 3: Library System
+   - Set up an HTML page with the following elements:
+     - An input field with the ID `taskDescription` for entering new tasks.
+     - A button with the ID `addTaskButton` to add the new task.
+     - An unordered list with the ID `taskList` to display tasks.
+     - A span with the ID `totalCount` to show the total number of tasks.
+   - Use JavaScript to:
+     - Add an event listener to the `addTaskButton` that retrieves the value from the `taskDescription` input field, adds it as a new task, clears the input field, and updates the displayed task list.
+     - Implement the `displayTasks()` function to:
+       - Clear the current list.
+       - Create a list item (`<li>`) for each task, with a button to mark the task as completed.
+       - Add the class `completed` to completed tasks for styling.
+       - Append the task items and buttons to the `taskList`.
+       - Update the `totalCount` span with the total number of tasks.
+
+4. **Additional Features:**
+   - Implement task filtering functionality. Add a dropdown or set of buttons to filter tasks based on their completion status (e.g., "All", "Completed", "Incomplete"). Update the displayed task list based on the selected filter.
+
+**Example HTML Structure:**
+
+- Use solution index.html file
+
+**JavaScript Requirements:**
+
+- Implement the `Task` and `ToDoList` classes in `script.js`.
+- Ensure that your code effectively interacts with the HTML elements and updates the task list and total count as specified.
+
+**Hints:**
+
+- Use `document.createElement` to create new DOM elements.
+- Use `element.appendChild` to add elements to the DOM.
+- Update the `displayTasks` function to handle task filtering based on status.
+
+### Question 2: Library System
 
 **Scenario:**
 You are creating a library system that allows users to manage their book collections. The system should allow users to add books, remove books, search for books by title, and display the total number of books. Additionally, users should be able to filter books by their reading status (read/unread).
@@ -157,19 +191,58 @@ You are creating a library system that allows users to manage their book collect
 4. Implement a method to get the total count of books.
 5. Use DOM manipulation to display the list of books, their details, and the total book count on the web page.
 
-### Question 4: Event Scheduler
+**Instructions:**
 
-**Scenario:**
-You are building an event scheduler application. The application should allow users to add events, remove events, update event details, filter events by date, and display the total number of events.
+1. **Book Class:**
 
-**Requirements:**
+   - Implement a `Book` class with the following properties and methods:
+     - **Properties:**
+       - `title` (string): The title of the book.
+       - `author` (string): The author of the book.
+       - `borrowed` (boolean): Indicates whether the book has been borrowed.
+     - **Methods:**
+       - `markBorrowed()`: Sets the `borrowed` property to `true`.
 
-1. Create an `Event` class with properties for the event name, date, and location.
-2. Implement an `EventScheduler` class that manages an array of `Event` objects.
-3. Provide methods to add a new event, remove an event by its name, update an event’s details, and filter events by date.
-4. Implement a method to display the total number of events in consoles.
+2. **Library Class:**
 
-### Question 5: Expense Tracker
+   - Create a `Library` class to manage an array of `Book` objects.
+   - **Methods:**
+     - `addBook(title, author)`: Adds a new `Book` with the given title and author to the library.
+     - `removeBook(index)`: Removes the book at the specified index.
+     - `markBookBorrowed(index)`: Marks the book at the specified index as borrowed.
+     - `getTotalCount()`: Returns the total number of books in the library.
+
+3. **DOM Manipulation:**
+   - Set up an HTML page with the following elements:
+     - An input field with the ID `bookTitle` for entering the book's title.
+     - An input field with the ID `bookAuthor` for entering the book's author.
+     - A button with the ID `addBookButton` to add the new book to the library.
+     - An unordered list with the ID `bookList` to display the list of books.
+     - A span with the ID `totalBooks` to show the total number of books in the library.
+   - Use JavaScript to:
+     - Add an event listener to the `addBookButton` that retrieves the values from the `bookTitle` and `bookAuthor` input fields, adds the book to the library, clears the input fields, and updates the displayed list of books.
+     - Implement the `displayBooks()` function to:
+       - Clear the current list of books.
+       - Create a list item (`<li>`) for each book, including buttons to mark the book as borrowed and to remove the book from the library.
+       - Add the class `borrowed` to list items representing borrowed books for styling.
+       - Append the list items and buttons to the `bookList`.
+       - Update the `totalBooks` span with the total number of books in the library.
+
+**Example HTML Structure:**
+
+- Use solution index.html file
+
+**Additional Features:**
+
+- Implement functionality to allow users to filter books based on their status (borrowed or available). Add a dropdown or set of buttons to filter the displayed list of books based on their borrowed status (e.g., "All", "Borrowed", "Available").
+
+**Hints:**
+
+- Use `document.createElement` to create new DOM elements dynamically.
+- Use `element.appendChild` to add elements to the DOM.
+- Update the `displayBooks` function to handle filtering based on the book's borrowed status.
+
+### Question 3: Expense Tracker
 
 **Scenario:**
 You are creating an expense tracker application to help users manage their expenses. The application should allow users to add expenses, remove expenses, categorize expenses, filter expenses by category, and display the total amount spent.
@@ -181,3 +254,124 @@ You are creating an expense tracker application to help users manage their expen
 3. Provide methods to add a new expense, remove an expense by its description, categorize expenses, and filter expenses by category.
 4. Implement a method to calculate and display the total amount spent.
 5. Use DOM manipulation to display the list of expenses, their details, and the total amount spent on the web page.
+
+**Instructions:**
+
+1. **Expense Class:**
+
+   - Implement an `Expense` class with the following properties:
+     - **Properties:**
+       - `name` (string): The name of the expense.
+       - `amount` (number): The amount of the expense.
+       - `category` (string): The category of the expense (e.g., Food, Transport, Entertainment).
+
+2. **ExpenseTracker Class:**
+
+   - Create an `ExpenseTracker` class to manage an array of `Expense` objects.
+   - **Methods:**
+     - `addExpense(name, amount, category)`: Adds a new `Expense` with the specified name, amount, and category to the tracker.
+     - `removeExpense(index)`: Removes the expense at the specified index.
+     - `getTotalExpense()`: Returns the total amount of all expenses.
+     - `displayExpenses()`: Dynamically displays the list of expenses and updates the total expense amount.
+
+3. **DOM Manipulation:**
+   - Set up an HTML page with the following elements:
+     - An input field with the ID `expenseName` for entering the name of the expense.
+     - An input field with the ID `expenseAmount` for entering the amount of the expense.
+     - A dropdown with the ID `expenseCategory` for selecting the category of the expense.
+     - A button with the ID `addExpenseButton` to add the new expense.
+     - A div with the ID `expenseList` to display the list of expenses.
+     - A span with the ID `totalExpense` to show the total amount of expenses.
+   - Use JavaScript to:
+     - Add an event listener to the `addExpenseButton` that retrieves the values from the `expenseName`, `expenseAmount`, and `expenseCategory` fields, adds the expense to the tracker, clears the input fields, and updates the displayed list of expenses.
+     - Implement the `displayExpenses()` function to:
+       - Clear the current list of expenses.
+       - Create a div element (`<div>`) for each expense, displaying the name, category, and amount.
+       - Add a "Remove" button next to each expense to allow users to remove an expense.
+       - Append the expense items and buttons to the `expenseList`.
+       - Update the `totalExpense` span with the total amount of all expenses.
+
+**Additional Features:**
+
+- Implement functionality to filter expenses by category. Allow users to view only the expenses under a specific category (e.g., Food, Transport).
+- Add validation to ensure the `expenseAmount` is a positive number.
+
+**Hints:**
+
+- Use `document.createElement` to dynamically create DOM elements.
+- Use `element.appendChild` to add elements to the DOM.
+- Update the `displayExpenses` function to handle filtering based on the selected category.
+
+### Question 4: Inventory Management System
+
+**Scenario:**
+You are developing an inventory management system for a small business. The system should track products, add new products, remove products, update product quantities, and display products based on their quantity status (in stock/out of stock).
+
+**Requirements:**
+
+1. Create a `Product` class with properties for the product name, quantity, and a method to update the quantity.
+2. Implement an `Inventory` class that manages an array of `Product` objects.
+3. Provide methods to add a new product, remove a product by its name, update a product’s quantity, and filter products based on their quantity status.
+4. Implement a method to display the total number of products.
+5. Use DOM manipulation to display the list of products and their quantities on the web page.
+
+**Instructions:**
+
+1. **Product Class:**
+
+   - Implement a `Product` class with the following properties:
+     - **Properties:**
+       - `name` (string): The name of the product.
+       - `category` (string): The category of the product.
+       - `quantity` (number): The quantity of the product in stock.
+       - `price` (number): The price per unit of the product.
+       - `dateAdded` (Date): The date when the product was added to the inventory.
+       - `id` (string): A unique identifier for each product.
+     - **Method:**
+       - `getTotalValue()`: Returns the total value of the product (quantity multiplied by price).
+
+2. **Inventory Class:**
+
+   - Create an `Inventory` class to manage the list of products.
+   - **Methods:**
+     - `addProduct(product)`: Adds a new `Product` object to the inventory and updates the display.
+     - `deleteProduct(id)`: Deletes a product from the inventory by its unique ID and updates the display.
+     - `updateProduct(id, updatedProduct)`: Updates the details of a product by its ID and updates the display.
+     - `displayProducts()`: Displays all products in a table and updates the inventory summary.
+     - `editProduct(id)`: Populates the form fields with the product's details for editing.
+     - `handleFormSubmit(event)`: Handles the form submission for adding or updating a product. If an ID is provided, it updates the product; otherwise, it adds a new product.
+     - `updateSummary()`: Updates the summary section showing the total number of products, the total quantity in stock, and the total value of all products.
+     - `clearForm()`: Clears the form fields after submission.
+
+3. **DOM Manipulation:**
+   - Set up an HTML page with the following elements:
+     - An input form for product details:
+       - `name` (input field): The name of the product.
+       - `category` (input field): The category of the product.
+       - `quantity` (input field): The quantity in stock.
+       - `price` (input field): The price per unit.
+       - A hidden input field `product-id` to store the unique ID of the product (used for editing).
+     - A submit button to add or update the product.
+     - A table with the ID `product-table-body` to display the products.
+     - A summary section with the following IDs:
+       - `totalProducts` to display the total number of products.
+       - `totalQuantity` to display the total quantity in stock.
+       - `totalValue` to display the total value of all products.
+   - Use JavaScript to:
+     - Attach an event listener to the form for submission, which calls the `handleFormSubmit` method.
+     - Implement the `displayProducts()` method to:
+       - Clear the current table rows.
+       - Create a row for each product, displaying its attributes.
+       - Add "Edit" and "Delete" buttons for each product, with the respective functionality.
+       - Update the summary section with the total number of products, the total quantity, and the total value.
+
+**Additional Features:**
+
+- Implement a search or filter feature to find products by name or category.
+- Add a validation step to ensure that `quantity` and `price` are positive numbers.
+
+**Hints:**
+
+- Use `document.createElement` to dynamically create DOM elements.
+- Use `element.appendChild` to add elements to the DOM.
+- Use `toFixed(2)` to format prices to two decimal places.

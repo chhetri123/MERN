@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expense Tracker</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background-color: #f8f9fa;
+      }
+      .container {
+        margin-top: 50px;
+        max-width: 800px;
+      }
+      .expense-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        border: 1px solid #dee2e6;
+        border-radius: 4px;
+        margin-bottom: 10px;
+        background-color: #fff;
+      }
+      .expense-item .amount {
+        font-weight: bold;
+      }
+      .total-expense {
+        font-size: 1.5em;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="text-center mb-4">Expense Tracker</h1>
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          id="expenseName"
+          class="form-control"
+          placeholder="Enter expense name"
+          aria-label="Expense name"
+        />
+        <input
+          type="number"
+          id="expenseAmount"
+          class="form-control"
+          placeholder="Enter amount"
+          aria-label="Amount"
+        />
+        <select id="expenseCategory" class="form-control">
+          <option value="Food">Food</option>
+          <option value="Transport">Transport</option>
+          <option value="Entertainment">Entertainment</option>
+          <option value="Bills">Bills</option>
+          <option value="Others">Others</option>
+        </select>
+        <div class="input-group-append">
+          <button id="addExpenseButton" class="btn btn-primary" type="button">
+            Add Expense
+          </button>
+        </div>
+      </div>
+      <div id="expenseList"></div>
+      <p class="text-center total-expense" id="totalExpense">
+        Total Expense: $0
+      </p>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="expense.js"></script>
+  </body>
+</html>

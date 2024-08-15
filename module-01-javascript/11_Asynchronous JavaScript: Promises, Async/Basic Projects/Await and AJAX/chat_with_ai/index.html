@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ChatGPT Clone</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+    <style>
+      body {
+        background-color: #343541;
+        color: #ffffff;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+      .container-fluid {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+      }
+      #chat-container {
+        flex-grow: 1;
+        overflow-y: auto;
+        padding: 20px;
+      }
+      .message {
+        margin-bottom: 15px;
+        padding: 10px;
+        border-radius: 5px;
+        position: relative;
+      }
+      .user-message {
+        background-color: #40414f;
+      }
+      .chatgpt-message {
+        background-color: #d1e7dd1b;
+      }
+      #form {
+        width: 90%;
+        margin: 0 auto;
+      }
+
+      #input-container {
+        background-color: #40414f;
+        padding: 20px;
+      }
+      #user-input {
+        background-color: #40414f;
+        color: #ffffff;
+        padding: 10px 10px;
+        border: 1px solid #565869;
+      }
+      #user-input:focus {
+        background-color: #40414f;
+        color: #ffffff;
+      }
+      #send-btn {
+        padding: 10px 20px;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+      .copy-icon {
+        position: absolute;
+        bottom: 3px;
+        right: 5px;
+        cursor: pointer;
+        display: none;
+        color: #ffffff;
+      }
+      .message:hover .copy-icon {
+        display: block;
+      }
+      .alert-adjust {
+        max-width: 250px;
+        margin: 0 auto;
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        opacity: 0.5;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid d-flex flex-column h-100">
+      <h1 class="text-center my-4">ChatGPT Clone</h1>
+      <div id="chat-container"></div>
+      <div id="input-container" class="mt-auto">
+        <form id="form">
+          <div class="input-group">
+            <input
+              type="text"
+              id="user-input"
+              class="form-control"
+              placeholder="Type your message..."
+            />
+            <button class="btn btn-primary" id="send-btn">Send</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div
+      class="alert alert-success alert-dismissible fade alert-adjust"
+      id="alert"
+      role="alert"
+    >
+      <strong> Copied to clipboard !!!</strong>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+      ></button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <script src="script.js"></script>
+  </body>
+</html>
