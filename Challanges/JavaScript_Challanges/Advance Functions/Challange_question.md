@@ -55,7 +55,9 @@ Create a class Shape with the following properties and methods:
 - The Rectangle class should have additional properties width and height and a method area that calculates and returns the area of the rectangle.
 
 **_Final Challenge: Movie Management System_**
+
 Objective:
+
 Create a simple movie management system where you can add movies, rate them, and filter movies based on ratings.
 
 Requirements:

@@ -304,8 +304,6 @@ ford.accelerate();
 ford.accelerate();
 ford.brake();
 
-
-
 /**********************
  *
  * Challange 1 solution
@@ -353,7 +351,7 @@ console.log(result); // "Hello, World!"
  *
  *
  */
-/ Step 1: Create the function
+// / Step 1: Create the function
 function multiply(x, y, z) {
   return x * y * z;
 }
@@ -375,7 +373,7 @@ console.log(result); // 24
  *
  * Challange 4 solution
  *
- * 
+ *
  */
 
 function calculateDiscount(price, discount, tax) {
