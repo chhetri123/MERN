@@ -2,7 +2,9 @@ import { useFetch } from "./components/useFetch";
 
 function App() {
   const [data, isLoading] = useFetch(
-    "http://universities.hipolabs.com/search?country=nepal"
+    "http://universities.hipolabs.com/search?country=nepal",
+    "get",
+    {}
   );
 
   if (isLoading) return <div>{isLoading}</div>;
