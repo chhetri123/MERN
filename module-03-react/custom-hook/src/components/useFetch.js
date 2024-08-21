@@ -15,14 +15,15 @@ export const useFetch = (url, method, payload) => {
       const response = await request.data;
       setData(response);
       handleLoading(false);
-    } catch {
+    } catch (err) {
+      console.log(err);
       handleLoading(false);
     }
   }, [url, method, payload]);
 
   useEffect(() => {
     fetch();
-  }, []);
+  }, [fetch]);
 
   return [data, isLoading];
 };
