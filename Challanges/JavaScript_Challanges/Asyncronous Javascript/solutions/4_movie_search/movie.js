@@ -5,28 +5,50 @@ document
     const title = document.getElementById("movie").value;
     await searchMovies(title);
   });
-
+const errMsg = document.getElementById("errorMsg");
+const moviesDiv = document.getElementById("movies");
 async function searchMovies(title) {
-  const apiKey = "your_api_key"; // Replace with your API key
   try {
     const response = await fetch(
-      `https://www.omdbapi.com/?s=${title}&apikey=${apiKey}`
+      `https://freetestapi.com/api/v1/movies?search=${title}`
     );
     if (!response.ok) throw new Error("Movie not found");
     const data = await response.json();
+    if (data.length <= 0) {
+      errMsg.textContent = "No movies found with the given title.";
+      moviesDiv.innerHTML = "";
+      return;
+    }
 
-    const moviesDiv = document.getElementById("movies");
     moviesDiv.innerHTML = "";
-    data.Search.forEach((movie) => {
-      const movieDiv = document.createElement("div");
-      movieDiv.innerHTML = `
-        <h3>${movie.Title}</h3>
-        <img src="${movie.Poster}" alt="${movie.Title}">
-        <p>${movie.Year}</p>
-      `;
-      moviesDiv.appendChild(movieDiv);
+    errMsg.textContent = "";
+    data.forEach((movie) => {
+      const movieHTML = `<div class="card shadow-lg col-12 col-md-6 col-lg-4 mb-4">
+  <img
+    src="${movie.poster}"
+    alt="${movie.title} Poster"
+    class="card-img-top"
+    style="height: 15rem; object-fit: cover;"
+  />
+  <div class="card-body">
+    <h3 class="card-title text-dark font-weight-bold mb-2">
+      ${movie.title}
+    </h3>
+    <p class="text-muted mb-2">
+      ${movie.year} | ${movie.genre.join(", ")}
+    </p>
+    <p class="text-body mb-3">
+      ${movie.plot}
+    </p>
+    <p class="text-warning font-weight-bold h5">
+      Rating: ${movie.rating}
+    </p>
+  </div>
+</div>
+`;
+      moviesDiv.innerHTML += movieHTML;
     });
   } catch (error) {
-    console.error("Error fetching movie data:", error);
+    errMsg.textContent = error.message;
   }
 }
