@@ -23,8 +23,14 @@ app.post("/form-submit", (req, res) => {
   const formData = fs.readFileSync("data.json", "utf8");
   const parsedData = JSON.parse(formData);
   parsedData.push(data);
-  fs.writeFileSync("data.json", JSON.stringify(parsedData));
-  res.send("Form submitted");
+  fs.writeFileSync("data.json", JSON.stringify(parsedData, null, 2), "utf8");
+  setTimeout(() => {
+    res.send(
+      `<h1>Form submited successfully</h1>
+      <a href="/">Go back</a>
+    `
+    );
+  }, 6000);
 });
 
 //

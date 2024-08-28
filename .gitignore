@@ -1,3 +1,4 @@
 node_modules
 .env
 package-lock.json
+module-01-javascript/.DS_Store

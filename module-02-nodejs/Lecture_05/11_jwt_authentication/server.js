@@ -8,7 +8,9 @@ import countryRouter from "./routes/country.routes.js";
 const app = express();
 
 app.use(express.json());
-
+app.get("/hello", function (req, res) {
+  res.send("Hello World!");
+});
 app.use("/api/users", userRouter);
 app.use("/api/products", productRouter);
 app.use("/api/countries", countryRouter);

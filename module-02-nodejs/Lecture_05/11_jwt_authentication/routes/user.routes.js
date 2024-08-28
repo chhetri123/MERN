@@ -6,7 +6,7 @@ import {
   deleteUser,
   editUser,
 } from "../controller/user.controller.js";
-import verifyAccessToken from "../middleware/auth.middleware.js";
+import { verifyAccessToken } from "../middleware/auth.middleware.js";
 
 const userRouter = express.Router();
 
