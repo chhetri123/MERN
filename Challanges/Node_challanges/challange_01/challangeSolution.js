@@ -84,3 +84,74 @@ Usage:
   node app.js delete <title>
         `);
 }
+
+//  EventEmitter Solution
+// Step 1: Import required modules
+const readline = require("readline");
+const EventEmitter = require("events");
+
+// Step 2: Create an instance of EventEmitter
+const quizEmitter = new EventEmitter();
+
+// Step 3: Handle command-line arguments using process.argv
+const userName = process.argv[2] || "Guest";
+console.log(`Hello, ${userName}!`);
+
+// Step 4: Set up readline interface
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+
+// Step 5: Define quiz questions and answers
+const questions = [
+  { question: "What is the capital of France?", answer: "Paris" },
+  { question: "What is 2 + 2?", answer: "4" },
+  { question: "What is the color of the sky?", answer: "Blue" },
+];
+
+let currentQuestionIndex = 0;
+let score = 0;
+
+// Step 6: Emit quiz start event
+quizEmitter.emit("quizStart");
+
+quizEmitter.on("quizStart", () => {
+  console.log("The quiz has started!");
+  askQuestion();
+});
+
+// Step 7: Function to ask questions
+function askQuestion() {
+  if (currentQuestionIndex < questions.length) {
+    rl.question(
+      questions[currentQuestionIndex].question + " ",
+      (userAnswer) => {
+        // Emit question answered event
+        quizEmitter.emit("questionAnswered", userAnswer);
+      }
+    );
+  } else {
+    // Emit quiz end event
+    quizEmitter.emit("quizEnd");
+  }
+}
+
+// Step 8: Handle the 'questionAnswered' event
+quizEmitter.on("questionAnswered", (userAnswer) => {
+  if (
+    userAnswer.trim().toLowerCase() ===
+    questions[currentQuestionIndex].answer.toLowerCase()
+  ) {
+    score++;
+  }
+  currentQuestionIndex++;
+  askQuestion();
+});
+
+// Step 9: Handle the 'quizEnd' event
+quizEmitter.on("quizEnd", () => {
+  console.log("Quiz completed! Thank you for participating.");
+  console.log(`You scored ${score} out of ${questions.length}!`);
+  rl.close();
+});
