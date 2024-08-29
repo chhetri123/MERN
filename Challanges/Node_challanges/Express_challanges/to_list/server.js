@@ -26,7 +26,6 @@ app.post("/todos", (req, res) => {
     task: task,
     completed: false,
   };
-  ``;
 
   todos.push(newTodo);
   res.status(201).json(newTodo);
