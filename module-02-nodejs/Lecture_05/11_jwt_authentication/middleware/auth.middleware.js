@@ -22,11 +22,11 @@ export const verifyAccessToken = async (req, res, next) => {
 };
 
 // // middleware for authorization
-// export const restrictUser = (...roles) => {
-//   return (req, res, next) => {
-//     if (!roles.includes(req.user.role)) {
-//       return res.json({ msg: "Unauthorized user" });
-//     }
-//     next();
-//   };
-// };
+export const restrictUser = (...roles) => {
+  return (req, res, next) => {
+    if (!roles.includes(req.user.role)) {
+      return res.json({ msg: "Unauthorized user" });
+    }
+    next();
+  };
+};
