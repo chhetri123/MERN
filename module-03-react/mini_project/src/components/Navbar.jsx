@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
-
+import useSocket from "../hooks/useSocket";
+import NotificationIcon from "./NotificationIcon";
 const Navbar = () => {
+  const notifications = useSocket();
   return (
     <nav className="bg-gray-800 p-4 shadow-md">
       <ul className="flex space-x-8 justify-center">
@@ -23,6 +25,9 @@ const Navbar = () => {
           <Link to="/movies" className="text-white hover:text-blue-400">
             Movies
           </Link>
+        </li>
+        <li>
+          <NotificationIcon notifications={notifications} />
         </li>
       </ul>
     </nav>

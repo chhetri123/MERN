@@ -7,7 +7,9 @@ import { getData } from "../utils/localData";
 const Home = () => {
   const [tasks, setTasks] = useState([]);
   const [users, setUsers] = useState([]);
+
   useEffect(() => {
+    // Connect to socket server 3000
     const storedTasks = getData("tasks");
     const storedUsers = getData("users");
     setTasks(storedTasks);
