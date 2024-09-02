@@ -1,33 +1,14 @@
-import Lists from "./component/lists";
 import { useContext } from "react";
-import { ListParams } from "./context/list.context";
+import { ContextParam } from "./context/context";
 
 function App() {
-  const { list, addList, addCountry } = useContext(ListParams);
+  const { country, addCountry, deleteCountry, countryUpdate } =
+    useContext(ContextParam);
 
   return (
     <div>
-      <h2>Im inside App Component</h2>
-      <ul>
-        {list.map((item, index) => (
-          <li key={index}>{item}</li>
-        ))}
-      </ul>
-      <button
-        onClick={() => {
-          addList("new user");
-        }}
-      >
-        Add new user
-      </button>
-      <button
-        onClick={() => {
-          addCountry("new country");
-        }}
-      >
-        Add new country
-      </button>
-      <Lists />
+      <div>{JSON.stringify(country)}</div>
+      <button onClick={() => addCountry("USA")}>Add USA</button>
     </div>
   );
 }

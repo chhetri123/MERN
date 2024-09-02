@@ -1,6 +1,5 @@
 import axios from "axios";
 function App() {
-  const token = localStorage.getItem("user_token");
   const getRequest = async (e) => {
     try {
       e.preventDefault();
@@ -10,18 +9,16 @@ function App() {
       const req = await axios({
         url: "http://localhost:9090/api/user/log",
         method: "post",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
         data: {
           email: "nikhil@gmail.com",
-          password: "hello123",
+          password: "hello1234",
         },
       });
 
       const accToken = req.data.accessToken;
-      localStorage.setItem("user_token", accToken);
-      window.location.href = "/country";
+      console.log(accToken);
+      localStorage.setItem("user_access_token", accToken);
+      // window.location.href = "/country";
       //(delete ra edit)
 
       // const req = await axios({
