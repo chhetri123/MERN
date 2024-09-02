@@ -99,3 +99,23 @@
 6. **In-Memory Data:** Use an array to store user data (e.g., `let users = []`).
 7. **Testing:** Test all routes with valid and invalid inputs to ensure the middleware works as expected.
 8. **Extras:** Add more advanced features like role-based access control or rate-limiting middleware.
+
+### Folder Structure Challange
+
+- convert the final challange by adding task functionality to this folder structure:
+
+```
+/task-manager
+├── /controller
+│   ├── taskController.js
+│   └── userController.js
+├── /routes
+│   ├── taskRoutes.js
+│   └── userRoutes.js
+├── /middleware
+│   ├── auth.js
+│   ├── logger.js
+│   └── errorHandler.js
+└── index.js
+
+```
