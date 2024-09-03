@@ -12,7 +12,7 @@ const httpServer = createServer(app);
 app.use(express.json());
 app.use(loginRouter);
 
-const io = new Server(httpServer);
+const io = new Server(httpServer, { cors: "http://localhost:5173" });
 
 //middleware ( jwt verify ) => _id:'' => userModel.find => req.user = user
 
