@@ -1,11 +1,7 @@
 import express from "express";
 import multer from "multer";
-import path, { dirname } from "path";
-
-import { fileURLToPath } from "url";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+import path from "path";
+import router from "./routes.js";
 
 const imageStorage = multer.diskStorage({
   destination: "public/image",
@@ -37,6 +33,7 @@ const upload = multer({
 const app = express();
 
 app.use(express.json());
+app.use("/check", router);
 
 const uploadSingle = upload.single("doc");
 
@@ -44,8 +41,6 @@ app.post("/upload", uploadSingle, (req, res) => {
   console.log(req.file);
   res.json({ ok: true });
 });
-
-app.get("/media", express.static(path.join(__dirname, "..", "..", "public")));
 
 app.listen(3030, () => {
   console.log("server running at 3030");
