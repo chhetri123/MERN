@@ -5,11 +5,13 @@ import loginRouter from "./login.js";
 import db from "./db.js";
 import jwt from "jsonwebtoken";
 import userModel from "./model/user.model.js";
+import cors from "cors";
 
 const app = express();
 const httpServer = createServer(app);
 
 app.use(express.json());
+app.use(cors());
 app.use(loginRouter);
 
 const io = new Server(httpServer, { cors: "http://localhost:5173" });
@@ -55,17 +57,30 @@ io.use(async (socket, next) => {
 });
 
 //group
-const users = [];
+const users = {};
+
+// {_id: '234',fullname:'nikhil',email:'one@one.com'}
+
+// {
+//   "234": {_id: '234',fullname:'nikhil',email:'one@one.com'},
+//   "235": {_id: '234',fullname:'nikhil',email:'one@one.com'},
+//   "236": {_id: '234',fullname:'nikhil',email:'one@one.com'},
+//   "237": {_id: '234',fullname:'nikhil',email:'one@one.com'}
+// }
 
 //logical part
 io.on("connection", (socket) => {
-  users.push(socket.data);
-  socket.join(socket.data._id);
+  users[socket.data._id] = socket.data;
+
+  console.log("________________");
+  console.log(users);
+  console.log("________________");
+
+  socket.join(socket.data._id.toString());
   socket.emit(
     "joined",
     `${socket.data.fullname} has joined ROOM:${socket.data._id} successfully`
   );
-  console.log(`${socket.data.fullname} is online`);
   // console.log(socket.data);
   // console.log("user-information", socket.id);
   // socket.on("joinRoom", (roomID) => {
@@ -78,17 +93,8 @@ io.on("connection", (socket) => {
   });
 
   socket.on("msg", (payload) => {
+    console.log(payload);
     socket.to(payload.room).emit("msg", payload.msg);
-  });
-
-  socket.on("disconnect", () => {
-    socket.leave(socket.data._id);
-    socket.broadcast.emit("joined", `you have left ${socket.data._id}`);
-    const currentUsersIndex = users.findIndex(
-      (user) => user._id == socket.data._id
-    );
-    users.splice(currentUsersIndex, 1);
-    console.log(`${socket.data.fullname} is offline`);
   });
 
   //create room and join
