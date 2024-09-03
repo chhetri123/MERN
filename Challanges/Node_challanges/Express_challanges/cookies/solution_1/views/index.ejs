@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" class="<%= theme %>">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Preferences</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body style=`font-size:<%= fontSize %>`;>
+    <h1>Set Your Preferences</h1>
+    <form action="/set-preferences" method="POST">
+        <label for="theme">Theme:</label>
+        <select name="theme" id="theme">
+            <option value="light" <%= theme === 'light' ? 'selected' : '' %>>Light</option>
+            <option value="dark" <%= theme === 'dark' ? 'selected' : '' %>>Dark</option>
+        </select><br><br>
+
+        <label for="fontSize">Font Size:</label>
+        <select name="fontSize" id="fontSize">
+            <option value="small" <%= fontSize === 'small' ? 'selected' : '' %>>Small</option>
+            <option value="medium" <%= fontSize === 'medium' ? 'selected' : '' %>>Medium</option>
+            <option value="large" <%= fontSize === 'large' ? 'selected' : '' %>>Large</option>
+        </select><br><br>
+
+        <label for="language">Language:</label>
+        <select name="language" id="language">
+            <option value="English" <%= language === 'English' ? 'selected' : '' %>>English</option>
+            <option value="Spanish" <%= language === 'Spanish' ? 'selected' : '' %>>Spanish</option>
+            <option value="French" <%= language === 'French' ? 'selected' : '' %>>French</option>
+        </select><br><br>
+
+        <label for="duration">Cookie Duration (days):</label>
+        <input type="number" name="duration" id="duration" value="7" min="1"><br><br>
+
+        <button type="submit">Save Preferences</button>
+    </form>
+    <br>
+    <a href="/reset-preferences">Reset Preferences</a>
+</body>
+</html>
