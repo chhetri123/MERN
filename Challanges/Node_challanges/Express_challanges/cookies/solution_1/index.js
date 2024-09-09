@@ -34,7 +34,6 @@ app.get("/reset-preferences", (req, res) => {
   res.clearCookie("theme");
   res.clearCookie("fontSize");
   res.clearCookie("language");
-
   res.redirect("/");
 });
 

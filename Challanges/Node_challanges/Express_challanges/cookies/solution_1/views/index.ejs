@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" class="<%= theme %>">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Preferences</title>
-    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/style.css">
 </head>
-<body style=`font-size:<%= fontSize %>`;>
+<body class= <%= theme %> style="font-size:<%= fontSize %>;">
     <h1>Set Your Preferences</h1>
     <form action="/set-preferences" method="POST">
         <label for="theme">Theme:</label>
