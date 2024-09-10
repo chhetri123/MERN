@@ -281,3 +281,178 @@ app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
 ```
+
+# Understanding Database Relationships – One-to-Many, One-to-One, and Many-to-Many
+
+In any database, relationships between data are a crucial aspect of designing efficient data models. When designing applications, we often encounter different types of relationships between entities (tables/collections). These relationships are fundamental in both SQL and NoSQL databases, such as MongoDB.
+
+#### Types of Database Relationships:
+
+1. **One-to-One**
+2. **One-to-Many (or Many-to-One)**
+3. **Many-to-Many**
+
+Let’s go over each one of these relationships with real-life examples and then look at how to implement these relationships using **MongoDB** and **Mongoose**.
+
+---
+
+### 1. **One-to-One Relationship**
+
+**Definition**: In a one-to-one relationship, a record in one collection (table) is related to a single record in another collection (table).
+
+**Real-life Example**:
+
+- A **person** can have only **one passport**, and each **passport** belongs to only **one person**.
+
+#### Example in Node.js (Mongoose):
+
+```js
+const mongoose = require("mongoose");
+
+// Define the Person Schema
+const personSchema = new mongoose.Schema({
+  name: String,
+  passport: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Passport",
+  },
+});
+
+// Define the Passport Schema
+const passportSchema = new mongoose.Schema({
+  passportNumber: String,
+  issuedDate: Date,
+});
+
+// Create models
+const Person = mongoose.model("Person", personSchema);
+const Passport = mongoose.model("Passport", passportSchema);
+
+// Example query to populate the passport details of a person
+Person.findOne({ name: "John Doe" })
+  .populate("passport")
+  .exec((err, person) => {
+    console.log(person);
+  });
+```
+
+---
+
+### 2. **One-to-Many (or Many-to-One) Relationship**
+
+**Definition**: In a one-to-many relationship, one record in a collection (table) can be related to multiple records in another collection. However, each of the related records can only be linked to one record in the first collection.
+
+**Real-life Example**:
+
+- A **teacher** can teach **many students**, but each **student** can have only **one teacher** (for a given class or subject).
+
+#### Example in Node.js (Mongoose):
+
+```js
+const mongoose = require("mongoose");
+
+// Define the Teacher Schema
+const teacherSchema = new mongoose.Schema({
+  name: String,
+  students: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Student",
+    },
+  ],
+});
+
+// Define the Student Schema
+const studentSchema = new mongoose.Schema({
+  name: String,
+});
+
+// Create models
+const Teacher = mongoose.model("Teacher", teacherSchema);
+const Student = mongoose.model("Student", studentSchema);
+
+// Example query to populate all students of a teacher
+Teacher.findOne({ name: "Mr. Smith" })
+  .populate("students")
+  .exec((err, teacher) => {
+    console.log(teacher);
+  });
+```
+
+In this example, one teacher has many students, but each student can only have one teacher.
+
+---
+
+### 3. **Many-to-Many Relationship**
+
+**Definition**: In a many-to-many relationship, multiple records in one collection can relate to multiple records in another collection, and vice versa.
+
+**Real-life Example**:
+
+- **Students** can enroll in multiple **courses**, and each **course** can have multiple **students**.
+
+#### Example in Node.js (Mongoose):
+
+```js
+const mongoose = require("mongoose");
+
+// Define the Student Schema
+const studentSchema = new mongoose.Schema({
+  name: String,
+  courses: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Course",
+    },
+  ],
+});
+
+// Define the Course Schema
+const courseSchema = new mongoose.Schema({
+  courseName: String,
+  students: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Student",
+    },
+  ],
+});
+
+// Create models
+const Student = mongoose.model("Student", studentSchema);
+const Course = mongoose.model("Course", courseSchema);
+
+// Example query to populate all courses of a student
+Student.findOne({ name: "Alice" })
+  .populate("courses")
+  .exec((err, student) => {
+    console.log(student);
+  });
+
+// Example query to populate all students of a course
+Course.findOne({ courseName: "Math 101" })
+  .populate("students")
+  .exec((err, course) => {
+    console.log(course);
+  });
+```
+
+In this case, students can take many courses, and courses can have many students.
+
+---
+
+### `populate()` in Mongoose
+
+The `populate()` method in Mongoose allows you to reference documents in other collections and load them when querying. In our examples, we used `populate()` to load related documents (e.g., loading students for a teacher or courses for a student).
+
+---
+
+### Summary
+
+- **One-to-One**: Each entity in one collection corresponds to exactly one entity in another collection.
+- **One-to-Many**: One entity in a collection is related to many entities in another collection, but each related entity refers back to only one entity.
+- **Many-to-Many**: Many entities in one collection are related to many entities in another collection.
+
+By designing proper relationships between your data, you can build more structured and scalable applications. Understanding these relationships is crucial in both relational databases (like MySQL) and NoSQL databases (like MongoDB).
+
+---
