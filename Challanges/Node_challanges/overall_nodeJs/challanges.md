@@ -131,3 +131,40 @@ Post.aggregate([
    - Total Likes for a Post
    - Total Comments for each Post
    - Most Active Users
+
+### Advance Features
+
+In addition to the core functionality (posts, likes, comments, and users) you’ve implemented in the **Social Media Application Challenge**, you can add more advanced tasks to deepen the learning experience and simulate real-world social media features. Below are additional tasks that can challenge students to extend the project.
+
+---
+
+### **1. Follow/Unfollow Users**
+
+**Objective**: Implement a feature where users can follow or unfollow other users and see a feed of posts from the users they follow.
+
+- **Schema Design**:
+
+  - Add a `followers` and `following` field in the User schema, both as arrays of ObjectIds referencing other users.
+
+  ```js
+  const userSchema = {
+    name: String,
+    email: String,
+    password: String,
+    followers: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
+    following: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
+  };
+  ```
+
+- **API Endpoints**:
+
+  - `POST /users/:id/follow`: Follow a user.
+  - `POST /users/:id/unfollow`: Unfollow a user.
+  - `GET /users/:id/followers`: Get all followers of a user.
+  - `GET /users/:id/following`: Get the list of users a user is following.
+  - `GET /feed`: Fetch posts only from users the current user is following.
+
+- **Task**:
+  - Implement the `follow/unfollow` functionality.
+  - Populate follower and following lists.
+  - Create a personalized feed of posts from users they follow using MongoDB aggregation with `$lookup`.
