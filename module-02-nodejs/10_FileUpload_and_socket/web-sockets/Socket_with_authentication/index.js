@@ -14,7 +14,8 @@ app.use(express.json());
 // routes
 const userRoute = require("./routes/userRoutes");
 // Models
-const Message = require("../Basic_Socket/model/messageModel");
+const Message = require("./model/messageModel");
+const Room = require("./model/roomModel");
 
 // Api endpoints
 app.use("/api/auth", userRoute);
@@ -31,25 +32,71 @@ io.on("connection", (socket) => {
       status: err.statusCode || 500,
     });
   }
+  socket.on("join_room", async ({ roomId }) => {
+    const rooms = await Room.findOne({
+      roomId: roomId,
+    });
+    if (!rooms) {
+      const newRoom = new Room({
+        roomId: roomId,
+        membersId: [socket.user._id],
+      });
+      await newRoom.save();
+      socket.join(newRoom.roomId);
+      socket.emit("join_room_success", "Room created successfully");
+      return;
+    }
 
-  socket.on("send_message", async (msg) => {
-    if (!msg.text) {
+    // if room exists
+    if (!rooms.membersId.includes(socket.user._id)) {
+      rooms.membersId.push(socket.user._id);
+      await rooms.save();
+    }
+
+    socket.join(rooms.roomId);
+    socket.broadcast
+      .to(rooms.roomId)
+      .emit("user_added", `${socket.user.username} has joined the room`);
+
+    socket.emit("join_room_success", "You joined the room");
+
+    //
+  });
+  socket.on("send_message", async ({ text, roomId }) => {
+    if (!text) {
       return errorHandler({
         msg: "Message text is required",
         statusCode: 400,
       });
     }
-    // const room = Room.findById(msg.roomId);
-    // if (!room) {
-    //   return socket.emit("error", "Room not found");
-    // }
+
+    const room = await Room.findOne({
+      roomId: roomId,
+    });
+    if (!room) {
+      return errorHandler({
+        msg: "Room not found",
+        statusCode: 404,
+      });
+    }
+    if (!room.membersId.includes(socket.user._id)) {
+      return errorHandler({
+        msg: "You are not a member of this room",
+      });
+    }
     const newMessage = new Message({
-      text: msg.text,
+      text: text,
       senderId: socket.user._id,
+      roomID: room._id,
     });
     await newMessage.save();
-
-    io.except(socket.id).emit("receive_message", newMessage);
+    console.log(socket.rooms);
+    console.log(roomId);
+    io.to(String(roomId)).except(socket.id).emit("receive_message", {
+      text: text,
+      username: socket.user.username,
+      createdAt: newMessage.createdAt,
+    });
   });
 });
 
