@@ -93,3 +93,99 @@
   - The Matrix (1999)
 
 ---
+
+Here are two slightly more advanced React challenges that focus on creating small projects. These will still use **components** and **props**, but require more thought in how the components work together.
+
+---
+
+### **Project 1: Build a "Blog Post" **
+
+**Goal**: Create a simple blog layout using React components that display multiple blog posts using props.
+
+#### Instructions:
+
+1. Create a new component called `BlogPost`.
+2. The `BlogPost` component should accept the following props:
+   - `title` (string): The title of the blog post.
+   - `author` (string): The name of the author.
+   - `content` (string): The content/body of the post.
+   - `date` (string): The date the blog was posted.
+3. The component should display the blog post in a formatted layout:
+   - **Title** as a heading.
+   - **Author** and **date** underneath the title.
+   - **Content** as a paragraph.
+4. Create another component called `BlogFeed` which will display a list of blog posts. Pass an array of blog posts as props to `BlogFeed`.
+   - Each blog post in the array should have `title`, `author`, `content`, and `date` properties.
+   - Inside `BlogFeed`, map through the array and render a `BlogPost` for each blog entry.
+5. Use the `BlogFeed` component inside `App.js` and pass at least three different blog posts.
+
+#### Example:
+
+```jsx
+<BlogFeed
+  posts={[
+    {
+      title: "Learning React",
+      author: "Jane Doe",
+      content: "React is a powerful tool...",
+      date: "Sept 1, 2024",
+    },
+    {
+      title: "JavaScript Tricks",
+      author: "John Smith",
+      content: "Let me share some cool JS tricks...",
+      date: "Sept 2, 2024",
+    },
+    {
+      title: "CSS Basics",
+      author: "Emily Davis",
+      content: "CSS can be fun and easy!",
+      date: "Sept 3, 2024",
+    },
+  ]}
+/>
+```
+
+---
+
+### **Project 2: "Recipe Book" **
+
+**Goal**: Build a recipe book app that displays a list of recipes, each showing ingredients and instructions using nested components and props.
+
+#### Instructions:
+
+1. Create a `RecipeCard` component that displays a single recipe. It should take the following props:
+   - `title` (string): The name of the recipe.
+   - `ingredients` (array of strings): A list of ingredients.
+   - `instructions` (string): The instructions for preparing the recipe.
+2. Inside `RecipeCard`:
+   - Display the **title** as a heading.
+   - Render the **ingredients** as an unordered list (`<ul>`).
+   - Display the **instructions** as a paragraph below the ingredients.
+3. Create another component called `RecipeBook` that receives an array of recipe objects as props. Each object will have `title`, `ingredients`, and `instructions` properties.
+   - Inside `RecipeBook`, map through the array and render a `RecipeCard` for each recipe.
+4. Use the `RecipeBook` component inside `App.js` and pass at least three different recipes.
+
+#### Example:
+
+```jsx
+<RecipeBook
+  recipes={[
+    {
+      title: "Pancakes",
+      ingredients: ["Flour", "Milk", "Eggs", "Sugar"],
+      instructions: "Mix all ingredients and fry.",
+    },
+    {
+      title: "Spaghetti",
+      ingredients: ["Pasta", "Tomato Sauce", "Olive Oil"],
+      instructions: "Boil the pasta and add the sauce.",
+    },
+    {
+      title: "Salad",
+      ingredients: ["Lettuce", "Tomatoes", "Cucumbers"],
+      instructions: "Chop vegetables and toss together.",
+    },
+  ]}
+/>
+```
