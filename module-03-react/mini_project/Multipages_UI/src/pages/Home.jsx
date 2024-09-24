@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import WelcomeMessage from "./../components/Home/WelcomeMessage";
-import MotivationalQuote from "./../components/Home/MotivationQuotes";
-import Summary from "./../components/Home/Summary";
+import WelcomeMessage from "../components/Home/WelcomeMessage";
+import MotivationalQuote from "../components/Home/MotivationQuotes";
+import Summary from "../components/Home/Summary";
 import { getData } from "../utils/localData";
 
 const Home = () => {
