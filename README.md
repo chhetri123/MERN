@@ -52,13 +52,13 @@
 - Day 29: Handling Events in React
 - Day 30: Conditional Rendering and Lists
 
-### Week 7: Advanced React and State Management
+### **Week 7: Advanced React and State Management**
 
-- Day 31: Introduction to Hooks (useState, useEffect, customHooks )
+- Day 31: Introduction to Hooks (`useState`, `useEffect`, `customHooks`)
 - Day 32: React Router (Setup, Basic and Nested Routing)
-- Day 33: Introduction to Redux (Store, Actions, Reducers)
-- Day 34: Redux Toolkit
-- Day 35: Introduction to Next.js ( SSR & CSR )
+- Day 33: Introduction to Context API ( Context Provider, Consumers, useContext Hook)
+- Day 34: Advanced Context API (Managing Global State, Best Practices, Avoiding Prop Drilling)
+- Day 35: Introduction to Next.js (SSR & CSR, Pages, API Routes)
 
 ### Week 8: Full Stack Integration and Deployment
 
