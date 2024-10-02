@@ -1,7 +1,12 @@
-const UserProfile = ({ user }) => {
+const UserProfile = ({ user, currentUser }) => {
   const { username, email } = user;
+  console.log(user._id === currentUser._id);
   return (
-    <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <div
+      className={`w-full max-w-sm  ${
+        user._id === currentUser._id ? "bg-red-300" : "bg-white"
+      } border border-red-700 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"`}
+    >
       <div className="flex flex-col items-center pb-10">
         <img
           className="w-24 h-24 mb-3 rounded-full shadow-lg mt-5"

@@ -5,9 +5,11 @@ const {
   register,
   login,
   getAllusers,
+  checkLogIn,
 } = require("../controller/userController");
 
 userRoute.get("/", authenticateToken, getAllusers);
+userRoute.get("/isLoggedIn", authenticateToken, checkLogIn);
 
 userRoute.post("/register", register);
 

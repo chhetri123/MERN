@@ -46,6 +46,22 @@ const register = async (req, res) => {
   }
 };
 
+const checkLogIn = async (req, res) => {
+  try {
+    const user = req.user;
+    res.status(200).json({
+      status: "success",
+      user: user,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(400).json({
+      status: "fail",
+      msg: "Server Error",
+    });
+  }
+};
+
 const login = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -81,4 +97,4 @@ const login = async (req, res) => {
   }
 };
 
-module.exports = { register, login, getAllusers };
+module.exports = { register, login, getAllusers, checkLogIn };
