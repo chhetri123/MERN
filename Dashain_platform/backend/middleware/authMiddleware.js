@@ -3,7 +3,6 @@ const User = require("../models/User");
 
 const authValidation = async (req, res, next) => {
   // check breare token in auth headwer
-  console.log(req.headers["authorization"]);
 
   const token = req?.headers["authorization"]?.split(" ")[1];
 

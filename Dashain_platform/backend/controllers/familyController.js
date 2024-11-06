@@ -19,45 +19,32 @@ IF (self_connection_attempt)
 
 
   */
+  try {
+    const { userId: familyMemberId } = req.body;
+    const user = await User.findById(req.user._id);
 
-  const { userId } = req.body;
-  const currentUserId = req.user._id;
-  if (userId === currentUserId) {
-    return res
-      .status(400)
-      .json({ message: "Cannot add self as family member" });
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    if (user.familyMembers.includes(familyMemberId)) {
+      return res.status(400).json({ message: "Family member already added" });
+    }
+
+    user.familyMembers.push(familyMemberId);
+    await user.save();
+
+    // Add reciprocal relationship
+    const familyMember = await User.findById(familyMemberId);
+    if (familyMember && !familyMember.familyMembers.includes(user._id)) {
+      familyMember.familyMembers.push(user._id);
+      await familyMember.save();
+    }
+
+    res.json(user);
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error: error.message });
   }
-
-  const user = await User.findById(currentUserId);
-  if (!user) {
-    return res.status(400).json({ message: "User not found" });
-  }
-  const userToAdd = await User.findById(userId);
-  if (!userToAdd) {
-    return res.status(400).json({ message: "User to add not found" });
-  }
-
-  if (user.familyMembers.includes(userToAdd._id)) {
-    return res
-      .status(400)
-      .json({ message: "User already exist as  family member" });
-  }
-
-  user.familyMembers.push(userId);
-  await user.save();
-
-  //simlar reciprocal logic for another userId
-  if (userToAdd.familyMembers.includes(currentUserId._id)) {
-    return res
-      .status(400)
-      .json({ message: "User already exist as  family member" });
-  }
-  userToAdd.familyMembers.push(currentUserId);
-  await userToAdd.save();
-
-  res.status(200).json({
-    message: "User added as family member successfully",
-  });
 };
 
 const getFamilyMember = async (req, res) => {
