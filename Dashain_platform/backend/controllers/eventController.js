@@ -18,16 +18,24 @@ const createEvent = async (req, res) => {
   });
 };
 const getEvent = async (req, res) => {
-  const currentUserId = req.user._id;
-  const myEvents = await Event.find({
-    creator: currentUserId,
-  });
-  if (myEvents.length === 0) {
-    return res.status(404).json({ msg: "No events found" });
+  const currentUser = await User.findById(req.user._id);
+  if (!currentUser) {
+    return res.status(404).json({ message: "User not found" });
   }
-  res.status(200).json({
-    data: myEvents,
-  });
+
+  // 2. (User is the creator OR Creator is in user's family members)
+  const events = await Event.find({
+    participants: req.user._id, // User must be a participant
+    $or: [
+      { creator: req.user._id }, // User is creator
+      { creator: { $in: currentUser.familyMembers } }, // Creator is in user's family
+    ],
+  })
+    .sort("date")
+    .populate("creator", "name email profilePicture")
+    .populate("participants", "name email profilePicture");
+
+  res.json(events);
 };
 
 const joinEvent = async (req, res) => {
@@ -63,4 +71,38 @@ const joinEvent = async (req, res) => {
   //if user is family member of event creator
   //event ko participant ma add garne
 };
-module.exports = { createEvent, getEvent, joinEvent };
+
+const getEventDetails = async (req, res) => {
+  try {
+    const eventId = req.params.eventId;
+    const currentUserId = req.user._id;
+
+    /// Event exist or not
+    const event = await Event.findById(eventId);
+    if (!event) {
+      return res.status(404).json({ msg: "Event not found" });
+    }
+    const isParticipant = event.participants.includes(currentUserId);
+    if (!isParticipant) {
+      return res
+        .status(403)
+        .json({ msg: "You are not authorized to view event" });
+    }
+
+    const isCreator = event.creator.toString() === currentUserId.toString();
+    const isJoined = isParticipant;
+
+    await event.populate("creator", "name email profilePicture");
+    await event.populate("participants", "name email profilePicture");
+    res.status(200).json({
+      event,
+      isCreator,
+      isJoined,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ msg: err.message });
+  }
+};
+
+module.exports = { createEvent, getEvent, joinEvent, getEventDetails };
