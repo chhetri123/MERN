@@ -15,11 +15,11 @@ function messsageHandler(io, socket) {
     const message = new Message({
       eventId: eventId,
       content: content,
-      senderId: socket.user._id,
+      sender: socket.user._id,
     });
 
     await message.save();
-    await message.populate("senderId", "name profilePicture");
+    await message.populate("sender", "name profilePicture");
 
     io.to(eventId).emit("new-message", {
       message,
