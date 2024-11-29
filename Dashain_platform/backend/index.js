@@ -16,14 +16,18 @@ const userRoute = require("./routes/userRoutes");
 const familyRoute = require("./routes/familyRoutes");
 const eventRoute = require("./routes/eventRoutes");
 const photoRoutes = require("./routes/photoRoutes");
+const AppError = require("./utils/AppError");
+
+const errorHandler = require("./middleware/errorMiddleware");
 //
 app.use(express.json());
 app.use("/uploads", express.static("uploads"));
 
 //
 
-app.get("/", (req, res) => {
-  res.send("Hello, Me!");
+app.get("/test-error", (req, res) => {
+  const error = new Error("Developement Error", 500);
+  throw error;
 });
 
 //
@@ -32,6 +36,7 @@ app.use("/api/family", familyRoute);
 app.use("/api/event", eventRoute);
 app.use("/api/photo", photoRoutes);
 
+app.use(errorHandler);
 connectDb();
 server.listen(port, () => {
   console.log(`Server is running on port ${port}`);

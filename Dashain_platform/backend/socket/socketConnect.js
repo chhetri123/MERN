@@ -2,7 +2,8 @@ const socketIO = require("socket.io");
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 const Event = require("../models/Event");
-const messsageHandler = require("./messageHandler/messageHandler");
+const messsageHandler = require("./handler/messageHandler");
+const notificationHandler = require("./handler/notificationHandler");
 
 const socketConnect = (server) => {
   const io = socketIO(server);
@@ -22,6 +23,7 @@ const socketConnect = (server) => {
   });
 
   io.on("connection", (socket) => {
+    socket.join(socket.user._id.toString());
     socket.on("join-event", async (data) => {
       const event = await Event.findById(data.eventId);
       if (!event.participants.includes(socket.user._id)) {
@@ -32,6 +34,7 @@ const socketConnect = (server) => {
     });
 
     messsageHandler(io, socket);
+    notificationHandler(io, socket);
   });
 };
 
