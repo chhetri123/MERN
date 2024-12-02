@@ -6,6 +6,7 @@ const connectDb = require("./config/database");
 const http = require("http");
 const server = http.createServer(app);
 const port = process.env.PORT || 3000;
+const { query, body, validationResult } = require("express-validator");
 
 // socket connection
 const socketConnet = require("./socket/socketConnect");
@@ -25,10 +26,28 @@ app.use("/uploads", express.static("uploads"));
 
 //
 
-app.get("/test-error", (req, res) => {
-  const error = new Error("Developement Error", 500);
-  throw error;
-});
+app.get(
+  "/test-error",
+  // query("test").notEmpty(),
+  (req, res) => {
+    const result = validationResult(req);
+    if (!result.isEmpty()) {
+      return res.status(400).json({
+        status: 4,
+      });
+      // const error = new AppError(result.array()[0].msg, 400);
+      // return res.status(error.statusCode).json({ error: error.message });
+    }
+
+    console.log(result);
+    res.json({
+      msg: req.query,
+    });
+
+    // const error = new Error("Developement Error", 500);
+    // throw error;
+  }
+);
 
 //
 app.use("/api/user", userRoute);
