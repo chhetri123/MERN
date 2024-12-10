@@ -6,7 +6,28 @@ const connectDb = require("./config/database");
 const http = require("http");
 const server = http.createServer(app);
 const port = process.env.PORT || 3000;
-const { query, body, validationResult } = require("express-validator");
+const { validationResult } = require("express-validator");
+const User = require("./models/User");
+
+// Securities packages
+const morgan = require("morgan");
+const rateLimiter = require("express-rate-limit");
+const limiter = rateLimiter({
+  windowMs: 1 * 60 * 1000,
+  max: 5,
+  message: "To many requests, Try again after 10 minutes",
+});
+const helmet = require("helmet");
+const mongoSanitizer = require("express-mongo-sanitize");
+const xss = require("xss-clean");
+const hpp = require("hpp");
+const cors = require("cors");
+const corsOptions = {
+  origin: ["http://localhost:30002", "http://localhost:3000"],
+  methods: ["GET", "POST", "PATCH"],
+};
+
+// app.use(limiter)
 
 // socket connection
 const socketConnet = require("./socket/socketConnect");
@@ -21,7 +42,10 @@ const AppError = require("./utils/AppError");
 
 const errorHandler = require("./middleware/errorMiddleware");
 //
+app.use(helmet());
+app.use(cors(corsOptions));
 app.use(express.json());
+app.use(morgan(":method :url :status  - :response-time ms"));
 app.use("/uploads", express.static("uploads"));
 
 //
@@ -49,6 +73,23 @@ app.get(
   }
 );
 
+app.use(xss());
+app.use(mongoSanitizer());
+app.use(hpp());
+app.post("/test", limiter, async (req, res) => {
+  console.log(req.query);
+  console.log(req.body);
+  res.json({
+    data: req.body,
+  });
+  // const users = await User.find(req.body);
+  // res.json({
+  //   users,
+  // });
+  // res.json({
+  //   msg: "hello",
+  // });
+});
 //
 app.use("/api/user", userRoute);
 app.use("/api/family", familyRoute);
