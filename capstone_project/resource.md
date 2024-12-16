@@ -22,7 +22,12 @@
 - [YouTube: Stripe Payment System Tutorial](https://www.youtube.com/watch?v=mI_-1tbIXQI&t=5s&ab_channel=WebDevSimplified)
 - [NestNepal: eSewa Payment Integration](https://nestnepal.com/blog/esewa-payment-integration-in-nodejs/)
 
-**Action Items:**
+### OAuthentication
+
+- [blog.logrocket OAuthentication](https://blog.logrocket.com/implement-oauth-2-0-node-js/)
+- [Passport Js docs for OAuth ](https://www.passportjs.org/packages/passport-oauth2/)
+- [Google OAuth in both react and Node Js](https://blog.arunshaw.in/blog/google-oauth-with-nodejs-and-react)
+  **Action Items:**
 
 1. Watch more tutorials and read articles about integrating different payment gateways (Stripe, PayPal, Paystack, Razorpay, etc.).
 2. Build and test a sample payment system using one or more payment APIs.
